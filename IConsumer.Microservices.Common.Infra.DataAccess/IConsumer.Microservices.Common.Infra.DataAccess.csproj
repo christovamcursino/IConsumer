@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\IConsumer.Microservices.Common.Domain\IConsumer.Microservices.Common.Domain.csproj" />
   </ItemGroup>
 

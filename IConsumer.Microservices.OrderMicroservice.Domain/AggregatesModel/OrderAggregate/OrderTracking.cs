@@ -1,12 +1,12 @@
-﻿using System;
+﻿using IConsumer.Microservices.Common.Domain.Entity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate
 {
-    public class OrderTracking
+    public class OrderTracking : TEntity<Guid>
     {
-        public Guid Id { get; set; }
         public DateTime TrackingDate { get; set; }
         public OrderStatus OrderStatus { get; set; }
     }
