@@ -57,9 +57,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{FBF996
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6DDC6524-456E-473C-A6C0-17634397CA2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.Common.Domain", "IConsumer.Microservices.Common.Domain\IConsumer.Microservices.Common.Domain.csproj", "{9C8D0E20-1EF4-470A-BE5B-F0FC7C83DEE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.Common.Domain", "IConsumer.Microservices.Common.Domain\IConsumer.Microservices.Common.Domain.csproj", "{9C8D0E20-1EF4-470A-BE5B-F0FC7C83DEE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.Common.Infra.DataAccess", "IConsumer.Microservices.Common.Infra.DataAccess\IConsumer.Microservices.Common.Infra.DataAccess.csproj", "{0FB08264-F556-4974-96FF-EB3030A349CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.Common.Infra.DataAccess", "IConsumer.Microservices.Common.Infra.DataAccess\IConsumer.Microservices.Common.Infra.DataAccess.csproj", "{0FB08264-F556-4974-96FF-EB3030A349CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess", "IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess\IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess.csproj", "{C676138F-FC3D-4E8A-B53B-EF62EBBEBB19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.CustomerMicroService.Api", "IConsumer.Microservices.CustomerMicroService.Api\IConsumer.Microservices.CustomerMicroService.Api.csproj", "{137CE855-0C75-41F7-9ED3-D5F568D1FA2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.CustomerMicroservice.CrossCutting", "IConsumer.Microservices.CustomerMicroservice.CrossCutting\IConsumer.Microservices.CustomerMicroservice.CrossCutting.csproj", "{9CE9FB47-6219-46E0-8C2A-DD02394EAF08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A15A8DF1-E502-4158-B829-8924B7A86DDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.MicroServices.Common.Api", "IConsumer.MicroServices.Common.Api\IConsumer.MicroServices.Common.Api.csproj", "{49A99462-4508-413B-AA1B-48EAE4447BBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +101,22 @@ Global
 		{0FB08264-F556-4974-96FF-EB3030A349CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FB08264-F556-4974-96FF-EB3030A349CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FB08264-F556-4974-96FF-EB3030A349CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C676138F-FC3D-4E8A-B53B-EF62EBBEBB19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C676138F-FC3D-4E8A-B53B-EF62EBBEBB19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C676138F-FC3D-4E8A-B53B-EF62EBBEBB19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C676138F-FC3D-4E8A-B53B-EF62EBBEBB19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137CE855-0C75-41F7-9ED3-D5F568D1FA2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137CE855-0C75-41F7-9ED3-D5F568D1FA2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137CE855-0C75-41F7-9ED3-D5F568D1FA2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137CE855-0C75-41F7-9ED3-D5F568D1FA2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE9FB47-6219-46E0-8C2A-DD02394EAF08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE9FB47-6219-46E0-8C2A-DD02394EAF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE9FB47-6219-46E0-8C2A-DD02394EAF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE9FB47-6219-46E0-8C2A-DD02394EAF08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49A99462-4508-413B-AA1B-48EAE4447BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A99462-4508-413B-AA1B-48EAE4447BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A99462-4508-413B-AA1B-48EAE4447BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A99462-4508-413B-AA1B-48EAE4447BBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +148,11 @@ Global
 		{6DDC6524-456E-473C-A6C0-17634397CA2C} = {B6D3BBB1-0C0A-4B49-AD6E-7DB5EEAC37B7}
 		{9C8D0E20-1EF4-470A-BE5B-F0FC7C83DEE1} = {FBF9967A-3FE4-4378-A180-DC85E766AD8D}
 		{0FB08264-F556-4974-96FF-EB3030A349CD} = {6DDC6524-456E-473C-A6C0-17634397CA2C}
+		{C676138F-FC3D-4E8A-B53B-EF62EBBEBB19} = {0FA7D7EC-35ED-43ED-93F9-DBA62EAE0671}
+		{137CE855-0C75-41F7-9ED3-D5F568D1FA2C} = {734D391A-C05F-4D0B-9ADC-B94FD64F6CE0}
+		{9CE9FB47-6219-46E0-8C2A-DD02394EAF08} = {0FA7D7EC-35ED-43ED-93F9-DBA62EAE0671}
+		{A15A8DF1-E502-4158-B829-8924B7A86DDC} = {B6D3BBB1-0C0A-4B49-AD6E-7DB5EEAC37B7}
+		{49A99462-4508-413B-AA1B-48EAE4447BBB} = {A15A8DF1-E502-4158-B829-8924B7A86DDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {285D8B8A-ECDA-4959-AD8F-0DED65D860B4}

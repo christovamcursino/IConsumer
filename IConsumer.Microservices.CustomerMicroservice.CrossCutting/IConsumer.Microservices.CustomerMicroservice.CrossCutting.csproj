@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IConsumer.Microservices.CustomerMicroservice.Domain\IConsumer.Microservices.CustomerMicroservice.Domain.csproj" />
+    <ProjectReference Include="..\IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess\IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>
