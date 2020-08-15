@@ -28,8 +28,10 @@ namespace IConsumer.Microservices.CustomerMicroservice.Domain.AggregatesModel.Cu
 
         public Customer EditCustomer(Guid id, Customer customer)
         {
+            _uow.BeginTransaction();
             customer.Id = id;
             _customerRepository.Update(customer);
+            _uow.Commit();
             return customer;
         }
 

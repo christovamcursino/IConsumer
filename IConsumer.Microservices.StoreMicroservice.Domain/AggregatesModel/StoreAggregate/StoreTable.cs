@@ -7,6 +7,15 @@ namespace IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.Store
 {
     public class StoreTable : TEntity<Guid>
     {
+        public Store Store;
+        public StoreTable() { }
+        public StoreTable(Guid id, Store store, int tableNumber)
+        {
+            this.Id = id;
+            this.Store = store;
+            this.TableNumber = tableNumber;
+        }
+
         public int TableNumber { get; set; }
     }
 }
