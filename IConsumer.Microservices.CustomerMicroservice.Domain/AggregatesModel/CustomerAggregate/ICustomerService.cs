@@ -14,6 +14,7 @@ namespace IConsumer.Microservices.CustomerMicroservice.Domain.AggregatesModel.Cu
         /// <param name="id"></param>
         /// <returns></returns>
         Customer AddCustomer(Guid id, Customer customer);
+        Customer EditCustomer(Guid id, Customer customer);
         Customer GetCustomer(Guid id);
     }
 }

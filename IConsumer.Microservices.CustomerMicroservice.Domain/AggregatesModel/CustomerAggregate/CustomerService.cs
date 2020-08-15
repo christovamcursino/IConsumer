@@ -26,6 +26,13 @@ namespace IConsumer.Microservices.CustomerMicroservice.Domain.AggregatesModel.Cu
             return result;
         }
 
+        public Customer EditCustomer(Guid id, Customer customer)
+        {
+            customer.Id = id;
+            _customerRepository.Update(customer);
+            return customer;
+        }
+
         public Customer GetCustomer(Guid id)
         {
             return _customerRepository.GetByID(id);
