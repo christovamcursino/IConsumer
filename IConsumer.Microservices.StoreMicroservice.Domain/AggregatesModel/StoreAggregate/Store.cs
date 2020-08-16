@@ -11,9 +11,9 @@ namespace IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.Store
         public String CNPJ { get; set; }
         public string Name { get; set; }
         public Address Address { get; set; }
-        public IEnumerable<StoreTable> StoreTables { get; set; }
+        public ICollection<StoreTable> StoreTables { get; set; }
 
-        public void AddTable(int tableNumber)
+        public StoreTable AddTable(int tableNumber)
         {
             if (this.StoreTables==null)
             {
@@ -27,7 +27,8 @@ namespace IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.Store
                 Store = this
             };
 
-            this.StoreTables.Concat<StoreTable>(new [] {obj});
+            this.StoreTables.Add(obj);
+            return obj;
         }
     }
 }

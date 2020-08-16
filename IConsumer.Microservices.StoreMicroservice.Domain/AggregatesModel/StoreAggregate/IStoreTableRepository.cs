@@ -7,5 +7,6 @@ namespace IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.Store
 {
     public interface IStoreTableRepository : IRepository<Guid, StoreTable>
     {
+        ICollection<StoreTable> GetTablesOfStore(Guid storeId);
     }
 }

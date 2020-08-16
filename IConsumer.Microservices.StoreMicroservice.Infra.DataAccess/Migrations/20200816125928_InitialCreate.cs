@@ -35,8 +35,8 @@ namespace IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    TableNumber = table.Column<int>(nullable: false),
-                    StoreId = table.Column<Guid>(nullable: true)
+                    StoreId = table.Column<Guid>(nullable: false),
+                    TableNumber = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,7 +47,7 @@ namespace IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.Migrations
                         principalSchema: "Store",
                         principalTable: "Store",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

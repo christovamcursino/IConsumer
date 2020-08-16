@@ -30,11 +30,12 @@ namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
 
         // POST api/<StoreController>
         [HttpPost]
-        public void Post([FromBody] Store store)
+        public Store Post([FromBody] Store store)
         {
             //TODO: o id vira do IAM
             Guid id = Guid.NewGuid();
-            _storeService.AddStore(id, store);
+            var result = _storeService.AddStore(id, store);
+            return result;
         }
 
         // PUT api/<StoreController>/5

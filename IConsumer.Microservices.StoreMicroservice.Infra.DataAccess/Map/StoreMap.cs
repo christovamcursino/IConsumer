@@ -18,6 +18,10 @@ namespace IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.Map
                 address.Property(c => c.State);
                 address.Property(c => c.Zip);
             });
+
+            builder
+                .HasMany(n => n.StoreTables)
+                .WithOne(p => p.Store).HasForeignKey(f => f.StoreId);
         }
     }
 }

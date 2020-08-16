@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20200815193955_InitialCreate")]
+    [Migration("20200816125928_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("StoreId")
+                    b.Property<Guid>("StoreId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("TableNumber")
@@ -91,9 +91,11 @@ namespace IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.Migrations
 
             modelBuilder.Entity("IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.StoreAggregate.StoreTable", b =>
                 {
-                    b.HasOne("IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.StoreAggregate.Store", null)
+                    b.HasOne("IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.StoreAggregate.Store", "Store")
                         .WithMany("StoreTables")
-                        .HasForeignKey("StoreId");
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -10,5 +10,6 @@ namespace IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.Store
         Store EditStore(Guid id, Store store);
         Store GetStore(Guid id);
         StoreTable GetStoreTableById(Guid storeTableId);
+        Store AddTablesToStore(Guid id, int tableAmount);
     }
 }

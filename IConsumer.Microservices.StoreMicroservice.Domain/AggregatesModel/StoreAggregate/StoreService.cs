@@ -46,10 +46,9 @@ namespace IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.Store
 
             for (int i=0; i < tableAmount; i++)
             {
-                store.AddTable(++maxTableNumber);
+                var storeTable = store.AddTable(++maxTableNumber);
+                _storeTableRepository.Insert(storeTable);
             }
-
-            _storeRepository.Update(store);
 
             _uow.Commit();
             return store;
@@ -57,13 +56,15 @@ namespace IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.Store
 
         public Store GetStore(Guid id)
         {
-            return _storeRepository.GetByID(id);
+            var result = _storeRepository.GetByID(id);
+            result.StoreTables = _storeTableRepository.GetTablesOfStore(id).ToList();
+            return result;
         }
 
         public StoreTable GetStoreTableById(Guid storeTableId)
         {
             var result = _storeTableRepository.GetByID(storeTableId);
-            //TODO: check if store is in object
+            result.Store = _storeRepository.GetByID(result.StoreId);
             return result;
         }
     }

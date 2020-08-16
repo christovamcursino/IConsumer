@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.StoreAggregate;
+using IConsumer.Microservices.StoreMicroService.Api.Controllers.Model;
 using IConsumer.MicroServices.Common.Api;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,9 +31,10 @@ namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
         }
 
         // POST api/<Teste>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("add-tables")]
+        public void Post([FromBody] AddTableModel addTablesModel)
         {
+            var result = _storeService.AddTablesToStore(addTablesModel.StoreId, addTablesModel.TablesAmount);
         }
     }
 }
