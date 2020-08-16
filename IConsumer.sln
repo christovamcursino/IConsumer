@@ -61,21 +61,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.Common.Infra.DataAccess", "IConsumer.Microservices.Common.Infra.DataAccess\IConsumer.Microservices.Common.Infra.DataAccess.csproj", "{0FB08264-F556-4974-96FF-EB3030A349CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess", "IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess\IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess.csproj", "{C676138F-FC3D-4E8A-B53B-EF62EBBEBB19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess", "IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess\IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess.csproj", "{C676138F-FC3D-4E8A-B53B-EF62EBBEBB19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.CustomerMicroService.Api", "IConsumer.Microservices.CustomerMicroService.Api\IConsumer.Microservices.CustomerMicroService.Api.csproj", "{137CE855-0C75-41F7-9ED3-D5F568D1FA2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.CustomerMicroService.Api", "IConsumer.Microservices.CustomerMicroService.Api\IConsumer.Microservices.CustomerMicroService.Api.csproj", "{137CE855-0C75-41F7-9ED3-D5F568D1FA2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.CustomerMicroservice.CrossCutting", "IConsumer.Microservices.CustomerMicroservice.CrossCutting\IConsumer.Microservices.CustomerMicroservice.CrossCutting.csproj", "{9CE9FB47-6219-46E0-8C2A-DD02394EAF08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.CustomerMicroservice.CrossCutting", "IConsumer.Microservices.CustomerMicroservice.CrossCutting\IConsumer.Microservices.CustomerMicroservice.CrossCutting.csproj", "{9CE9FB47-6219-46E0-8C2A-DD02394EAF08}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A15A8DF1-E502-4158-B829-8924B7A86DDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.MicroServices.Common.Api", "IConsumer.MicroServices.Common.Api\IConsumer.MicroServices.Common.Api.csproj", "{49A99462-4508-413B-AA1B-48EAE4447BBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.MicroServices.Common.Api", "IConsumer.MicroServices.Common.Api\IConsumer.MicroServices.Common.Api.csproj", "{49A99462-4508-413B-AA1B-48EAE4447BBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.StoreMicroservice.CrossCutting", "IConsumer.Microservices.StoreMicroservice.CrossCutting\IConsumer.Microservices.StoreMicroservice.CrossCutting.csproj", "{BD8F6CB4-DF14-417A-BA4E-E7EA8D77C8E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.StoreMicroservice.CrossCutting", "IConsumer.Microservices.StoreMicroservice.CrossCutting\IConsumer.Microservices.StoreMicroservice.CrossCutting.csproj", "{BD8F6CB4-DF14-417A-BA4E-E7EA8D77C8E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.StoreMicroservice.Infra.DataAccess", "IConsumer.Microservices.StoreMicroservice.Infra.DataAccess\IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.csproj", "{FCEA7045-75C7-41EE-98B9-12BB11C7D2E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.StoreMicroservice.Infra.DataAccess", "IConsumer.Microservices.StoreMicroservice.Infra.DataAccess\IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.csproj", "{FCEA7045-75C7-41EE-98B9-12BB11C7D2E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.StoreMicroService.Api", "IConsumer.Microservices.StoreMicroService.Api\IConsumer.Microservices.StoreMicroService.Api.csproj", "{9BA62EC6-A43D-41A5-8CE1-858E222517EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.StoreMicroService.Api", "IConsumer.Microservices.StoreMicroService.Api\IConsumer.Microservices.StoreMicroService.Api.csproj", "{9BA62EC6-A43D-41A5-8CE1-858E222517EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.ProductMicroservice.CrossCutting", "IConsumer.Microservices.ProductMicroservice.CrossCutting\IConsumer.Microservices.ProductMicroservice.CrossCutting.csproj", "{E4359F96-3D14-499E-ABD5-A2FFD8B37146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.ProductMicroservice.Infra.DataAccess", "IConsumer.Microservices.ProductMicroservice.Infra.DataAccess\IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.csproj", "{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +139,14 @@ Global
 		{9BA62EC6-A43D-41A5-8CE1-858E222517EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BA62EC6-A43D-41A5-8CE1-858E222517EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BA62EC6-A43D-41A5-8CE1-858E222517EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4359F96-3D14-499E-ABD5-A2FFD8B37146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4359F96-3D14-499E-ABD5-A2FFD8B37146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4359F96-3D14-499E-ABD5-A2FFD8B37146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4359F96-3D14-499E-ABD5-A2FFD8B37146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -174,6 +186,8 @@ Global
 		{BD8F6CB4-DF14-417A-BA4E-E7EA8D77C8E2} = {BD73761F-6626-4B0B-A289-8308569B9789}
 		{FCEA7045-75C7-41EE-98B9-12BB11C7D2E9} = {BD73761F-6626-4B0B-A289-8308569B9789}
 		{9BA62EC6-A43D-41A5-8CE1-858E222517EB} = {D4109C16-EC2D-45B0-BC8A-A53175185332}
+		{E4359F96-3D14-499E-ABD5-A2FFD8B37146} = {D8812BFE-9401-4CDD-AF2C-E45B37448BA0}
+		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E} = {D8812BFE-9401-4CDD-AF2C-E45B37448BA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {285D8B8A-ECDA-4959-AD8F-0DED65D860B4}

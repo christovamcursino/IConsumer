@@ -9,6 +9,6 @@ namespace IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.Pro
     {
         public Guid StoreId { get; set; }
         public string Name { get; set; }
-        public IEnumerable<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }
