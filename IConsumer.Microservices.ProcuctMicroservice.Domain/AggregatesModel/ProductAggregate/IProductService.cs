@@ -11,7 +11,7 @@ namespace IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.Pro
         /// </summary>
         /// <param name="storeId"></param>
         /// <returns></returns>
-        IEnumerable<ProductType> GetMenu(Guid storeId);
+        ICollection<ProductType> GetMenu(Guid storeId);
 
         Product GetProduct(Guid productId);
         Product AddProduct(Product product);

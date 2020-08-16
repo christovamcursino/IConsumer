@@ -77,9 +77,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.Sto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.StoreMicroService.Api", "IConsumer.Microservices.StoreMicroService.Api\IConsumer.Microservices.StoreMicroService.Api.csproj", "{9BA62EC6-A43D-41A5-8CE1-858E222517EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.ProductMicroservice.CrossCutting", "IConsumer.Microservices.ProductMicroservice.CrossCutting\IConsumer.Microservices.ProductMicroservice.CrossCutting.csproj", "{E4359F96-3D14-499E-ABD5-A2FFD8B37146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.ProductMicroservice.CrossCutting", "IConsumer.Microservices.ProductMicroservice.CrossCutting\IConsumer.Microservices.ProductMicroservice.CrossCutting.csproj", "{E4359F96-3D14-499E-ABD5-A2FFD8B37146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.ProductMicroservice.Infra.DataAccess", "IConsumer.Microservices.ProductMicroservice.Infra.DataAccess\IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.csproj", "{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.ProductMicroservice.Infra.DataAccess", "IConsumer.Microservices.ProductMicroservice.Infra.DataAccess\IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.csproj", "{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.ProductMicroservice.Api", "IConsumer.Microservices.ProductMicroservice.Api\IConsumer.Microservices.ProductMicroservice.Api.csproj", "{B8E96A80-D9D6-46C6-9F2C-D9DCEF51C584}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +149,10 @@ Global
 		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E96A80-D9D6-46C6-9F2C-D9DCEF51C584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E96A80-D9D6-46C6-9F2C-D9DCEF51C584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E96A80-D9D6-46C6-9F2C-D9DCEF51C584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E96A80-D9D6-46C6-9F2C-D9DCEF51C584}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -188,6 +194,7 @@ Global
 		{9BA62EC6-A43D-41A5-8CE1-858E222517EB} = {D4109C16-EC2D-45B0-BC8A-A53175185332}
 		{E4359F96-3D14-499E-ABD5-A2FFD8B37146} = {D8812BFE-9401-4CDD-AF2C-E45B37448BA0}
 		{D6CBAC8D-B87A-48CE-93CE-C67340DA560E} = {D8812BFE-9401-4CDD-AF2C-E45B37448BA0}
+		{B8E96A80-D9D6-46C6-9F2C-D9DCEF51C584} = {ACB62477-E303-401C-8949-8A622829C6EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {285D8B8A-ECDA-4959-AD8F-0DED65D860B4}

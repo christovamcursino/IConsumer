@@ -1,6 +1,7 @@
 ﻿using IConsumer.Microservices.Common.Domain.UoW;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.ProductAggregate
@@ -27,11 +28,18 @@ namespace IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.Pro
             return result;
         }
 
-        public IEnumerable<ProductType> GetMenu(Guid storeId)
+        public ICollection<ProductType> GetMenu(Guid storeId)
         {
-            var result = _productTypeRepository.GetByStoreId(storeId);
-
-            //TODO: adicione os itens na colecao
+            var productTypes = _productTypeRepository.GetByStoreId(storeId).ToList();
+            var result = new List<ProductType>();
+            foreach (var item in productTypes)
+            {
+                item.Products = _productRepository.GetByProductType(item.Id);
+                if (item.Products.Count() > 0)
+                {
+                    result.Add(item);
+                }
+            }
 
             return result;
         }
@@ -50,3 +58,4 @@ namespace IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.Pro
         }
     }
 }
+
