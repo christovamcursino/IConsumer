@@ -21,6 +21,7 @@ namespace IConsumer.Microservices.ProductMicroservice.CrossCutting
 
             //Services
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductTypeService, ProductTypeService>();
         }
 
         public static void AddDbContext(this IServiceCollection services)

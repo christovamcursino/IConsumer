@@ -7,5 +7,6 @@ namespace IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.Pro
 {
     public interface IProductTypeRepository : IRepository<Guid, ProductType>
     {
+        IEnumerable<ProductType> GetByStoreId(Guid storeId);
     }
 }
