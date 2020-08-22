@@ -9,5 +9,8 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
     {
         public DateTime TrackingDate { get; set; }
         public OrderStatus OrderStatus { get; set; }
+
+        public Order Order { get; set; }
+        public Guid OrderId { get; set; }
     }
 }

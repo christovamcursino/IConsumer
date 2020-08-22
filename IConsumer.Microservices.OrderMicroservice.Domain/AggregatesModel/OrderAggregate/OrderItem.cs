@@ -11,6 +11,9 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
         public string ProductName { get; set; }
         public Decimal Price { get; set; }
         public int Amount { get; set; }
+
+        public Order Order { get; set; }
+        public Guid OrderId { get; set; }
     }
 }
 
