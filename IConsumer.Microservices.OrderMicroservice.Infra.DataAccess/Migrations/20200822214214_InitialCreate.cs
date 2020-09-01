@@ -32,6 +32,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     CustomerId = table.Column<Guid>(nullable: false),
+                    StoreId = table.Column<Guid>(nullable: false),
                     TableId = table.Column<Guid>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     OrderStatusId = table.Column<int>(nullable: true),
