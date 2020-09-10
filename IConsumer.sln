@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C9EDBA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{58D3650F-167E-4958-AFF2-AB9734873DEE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_IamMicroservice", "_IamMicroservice", "{2EAA9F41-28A9-4128-96DC-57A5DBF74E2B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerMicroService", "CustomerMicroService", "{953D2B11-CC9C-4C88-A3F7-A43F8A1AC35E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreMicroService", "StoreMicroService", "{437595C8-B313-4A01-9D0A-34043369228B}"
@@ -95,9 +93,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Domain", "2-Domain", "{A7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infrastructure", "3-Infrastructure", "{03A3AD72-6DE8-4709-BBA5-5BC2B9A0D7A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.PaymentMicroservice.Api", "IConsumer.Microservices.PaymentMicroservice.Api\IConsumer.Microservices.PaymentMicroservice.Api.csproj", "{E8A2E956-335A-45CF-8A85-1C38D97C2F0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.PaymentMicroservice.Api", "IConsumer.Microservices.PaymentMicroservice.Api\IConsumer.Microservices.PaymentMicroservice.Api.csproj", "{E8A2E956-335A-45CF-8A85-1C38D97C2F0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.PaymentMicroservice.Domain", "IConsumer.Microservices.PaymentMicroservice.Domain\IConsumer.Microservices.PaymentMicroservice.Domain.csproj", "{4FC766A7-0619-468E-99FD-A0F29425B7C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.PaymentMicroservice.Domain", "IConsumer.Microservices.PaymentMicroservice.Domain\IConsumer.Microservices.PaymentMicroservice.Domain.csproj", "{4FC766A7-0619-468E-99FD-A0F29425B7C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.SqlServer", "IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.SqlServer\IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.SqlServer.csproj", "{1B404203-19CD-40BB-938A-5C32F97857D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.Shared", "IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.Shared\IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.Shared.csproj", "{BBA8F8B6-957A-45DC-ADE4-00E5B5E0A67F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.PostgreSQL", "IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.PostgreSQL\IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.PostgreSQL.csproj", "{99EB7448-7A5F-42EE-9683-368B675ACED3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.MySql", "IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.MySql\IConsumer.Microservices.IamMicroservice.Admin.EntityFramework.MySql.csproj", "{219D6D33-59B5-4567-BC23-7AC30BFD28D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.IamMicroservice.STS.Identity", "IConsumer.Microservices.IamMicroservice.STS.Identity\IConsumer.Microservices.IamMicroservice.STS.Identity.csproj", "{F0E698FB-9D35-49A0-BE2A-1DB29258EDF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.IamMicroservice.Admin.Api", "IConsumer.Microservices.IamMicroservice.Admin.Api\IConsumer.Microservices.IamMicroservice.Admin.Api.csproj", "{BCBF4124-8A18-4D07-B80C-10058FAC0632}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IamMicroservice", "IamMicroservice", "{603F428D-E1F6-4987-863F-F68333008AD3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.IamMicroservice.Admin", "IConsumer.Microservices.IamMicroservice.Admin\IConsumer.Microservices.IamMicroservice.Admin.csproj", "{C8050C4C-609B-4FEF-A98F-09B83DD211FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,12 +199,39 @@ Global
 		{4FC766A7-0619-468E-99FD-A0F29425B7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FC766A7-0619-468E-99FD-A0F29425B7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FC766A7-0619-468E-99FD-A0F29425B7C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B404203-19CD-40BB-938A-5C32F97857D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B404203-19CD-40BB-938A-5C32F97857D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B404203-19CD-40BB-938A-5C32F97857D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B404203-19CD-40BB-938A-5C32F97857D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA8F8B6-957A-45DC-ADE4-00E5B5E0A67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA8F8B6-957A-45DC-ADE4-00E5B5E0A67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA8F8B6-957A-45DC-ADE4-00E5B5E0A67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA8F8B6-957A-45DC-ADE4-00E5B5E0A67F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99EB7448-7A5F-42EE-9683-368B675ACED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99EB7448-7A5F-42EE-9683-368B675ACED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99EB7448-7A5F-42EE-9683-368B675ACED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99EB7448-7A5F-42EE-9683-368B675ACED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{219D6D33-59B5-4567-BC23-7AC30BFD28D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{219D6D33-59B5-4567-BC23-7AC30BFD28D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{219D6D33-59B5-4567-BC23-7AC30BFD28D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{219D6D33-59B5-4567-BC23-7AC30BFD28D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0E698FB-9D35-49A0-BE2A-1DB29258EDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0E698FB-9D35-49A0-BE2A-1DB29258EDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0E698FB-9D35-49A0-BE2A-1DB29258EDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0E698FB-9D35-49A0-BE2A-1DB29258EDF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBF4124-8A18-4D07-B80C-10058FAC0632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBF4124-8A18-4D07-B80C-10058FAC0632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBF4124-8A18-4D07-B80C-10058FAC0632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBF4124-8A18-4D07-B80C-10058FAC0632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8050C4C-609B-4FEF-A98F-09B83DD211FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8050C4C-609B-4FEF-A98F-09B83DD211FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8050C4C-609B-4FEF-A98F-09B83DD211FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8050C4C-609B-4FEF-A98F-09B83DD211FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2EAA9F41-28A9-4128-96DC-57A5DBF74E2B} = {58D3650F-167E-4958-AFF2-AB9734873DEE}
 		{953D2B11-CC9C-4C88-A3F7-A43F8A1AC35E} = {58D3650F-167E-4958-AFF2-AB9734873DEE}
 		{437595C8-B313-4A01-9D0A-34043369228B} = {58D3650F-167E-4958-AFF2-AB9734873DEE}
 		{5BB39E0A-73EB-4FAC-A51C-88792F6B9072} = {58D3650F-167E-4958-AFF2-AB9734873DEE}
@@ -235,6 +276,14 @@ Global
 		{03A3AD72-6DE8-4709-BBA5-5BC2B9A0D7A2} = {EF9FACC3-1735-41C5-9D5A-C7D0AA152C1B}
 		{E8A2E956-335A-45CF-8A85-1C38D97C2F0E} = {2C3150E3-CA7F-4E9D-AE1A-1F32F9B2C7AB}
 		{4FC766A7-0619-468E-99FD-A0F29425B7C7} = {A74974E9-5D83-4BA7-9CAB-4ED1149E90CF}
+		{1B404203-19CD-40BB-938A-5C32F97857D9} = {603F428D-E1F6-4987-863F-F68333008AD3}
+		{BBA8F8B6-957A-45DC-ADE4-00E5B5E0A67F} = {603F428D-E1F6-4987-863F-F68333008AD3}
+		{99EB7448-7A5F-42EE-9683-368B675ACED3} = {603F428D-E1F6-4987-863F-F68333008AD3}
+		{219D6D33-59B5-4567-BC23-7AC30BFD28D4} = {603F428D-E1F6-4987-863F-F68333008AD3}
+		{F0E698FB-9D35-49A0-BE2A-1DB29258EDF3} = {603F428D-E1F6-4987-863F-F68333008AD3}
+		{BCBF4124-8A18-4D07-B80C-10058FAC0632} = {603F428D-E1F6-4987-863F-F68333008AD3}
+		{603F428D-E1F6-4987-863F-F68333008AD3} = {58D3650F-167E-4958-AFF2-AB9734873DEE}
+		{C8050C4C-609B-4FEF-A98F-09B83DD211FB} = {603F428D-E1F6-4987-863F-F68333008AD3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {285D8B8A-ECDA-4959-AD8F-0DED65D860B4}
