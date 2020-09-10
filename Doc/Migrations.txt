@@ -1,0 +1,14 @@
+#One time only
+dotnet tool install --global dotnet-ef
+
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+
+dotnet ef migrations remove
+
+
+
+exec dbo.DropSchema @schemaName = 'Store', @database = 'ICustomer', @whatif = 1
+
