@@ -7,5 +7,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
     public interface IOrderStatusService
     {
         IEnumerable<OrderStatus> GetStatusList();
+
+        void AddTracking(Guid orderId, OrderStatus orderStatus);
     }
 }
