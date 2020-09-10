@@ -9,5 +9,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
         Order CreateOrder(Order order);
         IEnumerable<Order> GetCustomerOrders(Guid customerId);
         IEnumerable<Order> GetStoreNewOrders(Guid storeId);
+
+        Order SetOrderStatus(Guid orderId, OrderStatus orderStatus);
     }
 }
