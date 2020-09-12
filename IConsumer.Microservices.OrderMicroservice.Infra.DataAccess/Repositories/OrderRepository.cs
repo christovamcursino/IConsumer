@@ -7,7 +7,7 @@ using System.Text;
 
 namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Repositories
 {
-    public class OrderRepository : RepositorySqlBase<Guid, Order>, IOrderRepository
+    public class OrderRepository : ASyncRepositorySqlBase<Guid, Order>, IOrderRepository
     {
         public OrderRepository(DbContext context) : base(context)
         {

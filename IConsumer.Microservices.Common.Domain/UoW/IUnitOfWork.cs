@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace IConsumer.Microservices.Common.Domain.UoW
 {
@@ -8,5 +9,6 @@ namespace IConsumer.Microservices.Common.Domain.UoW
     {
         public void BeginTransaction();
         public bool Commit();
+        public Task<int> SaveChangesAsync();
     }
 }

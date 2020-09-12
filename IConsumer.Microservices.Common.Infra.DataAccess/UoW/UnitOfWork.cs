@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace IConsumer.Microservices.Common.Infra.DataAccess.UoW
 {
@@ -29,6 +30,11 @@ namespace IConsumer.Microservices.Common.Infra.DataAccess.UoW
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _context.SaveChangesAsync();
         }
     }
 }

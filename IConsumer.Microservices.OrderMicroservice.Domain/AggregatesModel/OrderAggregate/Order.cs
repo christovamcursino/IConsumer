@@ -12,7 +12,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
         public Guid TableId { get; set; }
         public DateTime OrderDate { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public ICollection<OrderItem> OrderItens { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
         public ICollection<OrderTracking> TrackingHistory { get; set; }
 
         public bool PaymentApproved { get; set; }
