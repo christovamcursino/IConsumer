@@ -113,6 +113,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IamMicroservice", "IamMicro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.Microservices.IamMicroservice.Admin", "IConsumer.Microservices.IamMicroservice.Admin\IConsumer.Microservices.IamMicroservice.Admin.csproj", "{C8050C4C-609B-4FEF-A98F-09B83DD211FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.MicroServices.OrderMicroservice.Api", "IConsumer.MicroServices.OrderMicroservice.Api\IConsumer.MicroServices.OrderMicroservice.Api.csproj", "{6986AB8B-8807-4605-A41F-439046E88B4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,6 +229,10 @@ Global
 		{C8050C4C-609B-4FEF-A98F-09B83DD211FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8050C4C-609B-4FEF-A98F-09B83DD211FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8050C4C-609B-4FEF-A98F-09B83DD211FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6986AB8B-8807-4605-A41F-439046E88B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6986AB8B-8807-4605-A41F-439046E88B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6986AB8B-8807-4605-A41F-439046E88B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6986AB8B-8807-4605-A41F-439046E88B4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -284,6 +290,7 @@ Global
 		{BCBF4124-8A18-4D07-B80C-10058FAC0632} = {603F428D-E1F6-4987-863F-F68333008AD3}
 		{603F428D-E1F6-4987-863F-F68333008AD3} = {58D3650F-167E-4958-AFF2-AB9734873DEE}
 		{C8050C4C-609B-4FEF-A98F-09B83DD211FB} = {603F428D-E1F6-4987-863F-F68333008AD3}
+		{6986AB8B-8807-4605-A41F-439046E88B4B} = {D68645D1-C2FA-4F3D-9CC4-A23AD7294A8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {285D8B8A-ECDA-4959-AD8F-0DED65D860B4}

@@ -59,7 +59,7 @@
     <entity-ids>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>1285</value>
+        <value>1287</value>
       </counter>
       <counter>
         <item-type type-id="actor" type="Actor" />
