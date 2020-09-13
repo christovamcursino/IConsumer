@@ -45,11 +45,5 @@ namespace IConsumer.Microservices.Common.Infra.DataAccess.Repository
         {
             _context.Set<T>().Update(entity);
         }
-
-        public async Task<int> SaveChangesAsync()
-        {
-            return await _context.SaveChangesAsync();
-        }
-
     }
 }

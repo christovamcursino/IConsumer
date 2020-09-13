@@ -8,13 +8,11 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
     public class OrderStatusService : IOrderStatusService
     {
         private IUnitOfWork _uow;
-        private IOrderStatusRepository _orderStatusRepository;
         private IOrderTrackingRepository _orderTrackingRepository;
 
-        public OrderStatusService(IUnitOfWork uow, IOrderStatusRepository orderStatusRepository, IOrderTrackingRepository orderTrackingRepository)
+        public OrderStatusService(IUnitOfWork uow, IOrderTrackingRepository orderTrackingRepository)
         {
             _uow = uow;
-            _orderStatusRepository = orderStatusRepository;
             _orderTrackingRepository = orderTrackingRepository;
         }
 
@@ -29,11 +27,6 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
 
             _orderTrackingRepository.Insert(tracking);
             _uow.Commit();
-        }
-
-        public IEnumerable<OrderStatus> GetStatusList()
-        {
-            return _orderStatusRepository.GetAll();
         }
     }
 }

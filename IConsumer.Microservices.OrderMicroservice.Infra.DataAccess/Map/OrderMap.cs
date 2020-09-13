@@ -16,7 +16,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Map
                 .WithOne(p => p.Order).HasForeignKey(f => f.OrderId);
 
             builder
-                .HasMany(n => n.OrderItens)
+                .HasMany(n => n.OrderItems)
                 .WithOne(p => p.Order).HasForeignKey(f => f.OrderId);
         }
     }

@@ -13,6 +13,5 @@ namespace IConsumer.Microservices.Common.Domain.Repository
         IEnumerable<T> ReadAll();
         Task<IEnumerable<T>> ReadAllAsync();
         void Update(T entity);
-        Task<int> SaveChangesAsync();
     }
 }

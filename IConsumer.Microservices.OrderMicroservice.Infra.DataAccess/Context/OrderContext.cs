@@ -24,7 +24,6 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Context
 
             modelBuilder.Entity<Order>();
             modelBuilder.Entity<OrderItem>();
-            modelBuilder.Entity<OrderStatus>();
             modelBuilder.Entity<OrderTracking>();
 
             //Map

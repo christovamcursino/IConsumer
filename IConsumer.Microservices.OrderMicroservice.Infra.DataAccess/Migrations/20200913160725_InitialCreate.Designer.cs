@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20200822214214_InitialCreate")]
+    [Migration("20200913160725_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("OrderStatusId")
+                    b.Property<int>("OrderStatus")
                         .HasColumnType("int");
 
                     b.Property<bool>("PaymentApproved")
@@ -50,8 +50,6 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderStatusId");
 
                     b.ToTable("Order");
                 });
@@ -84,24 +82,6 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Migrations
                     b.ToTable("OrderItem");
                 });
 
-            modelBuilder.Entity("IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate.OrderStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StatusId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OrderStatus");
-                });
-
             modelBuilder.Entity("IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate.OrderTracking", b =>
                 {
                     b.Property<Guid>("Id")
@@ -111,7 +91,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("OrderStatusId")
+                    b.Property<int>("OrderStatus")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TrackingDate")
@@ -121,22 +101,13 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("OrderStatusId");
-
                     b.ToTable("OrderTracking");
-                });
-
-            modelBuilder.Entity("IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate.Order", b =>
-                {
-                    b.HasOne("IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate.OrderStatus", "OrderStatus")
-                        .WithMany()
-                        .HasForeignKey("OrderStatusId");
                 });
 
             modelBuilder.Entity("IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate.OrderItem", b =>
                 {
                     b.HasOne("IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate.Order", "Order")
-                        .WithMany("OrderItens")
+                        .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -149,10 +120,6 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Migrations
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate.OrderStatus", "OrderStatus")
-                        .WithMany()
-                        .HasForeignKey("OrderStatusId");
                 });
 #pragma warning restore 612, 618
         }

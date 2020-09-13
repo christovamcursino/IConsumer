@@ -3,7 +3,9 @@ using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggr
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Repositories
 {
@@ -11,6 +13,20 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Repositorie
     {
         public OrderRepository(DbContext context) : base(context)
         {
+        }
+
+        public async Task<IEnumerable<Order>> FilterNewOrders(Guid storeId)
+        {
+            return await _context.Set<Order>()
+                .Where(o => o.StoreId.Equals(storeId))
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Order>> FilterOrdersOfCustomer(Guid customerId)
+        {
+            return await _context.Set<Order>()
+                .Where(o => o.CustomerId.Equals(customerId))
+                .ToListAsync();
         }
     }
 }
