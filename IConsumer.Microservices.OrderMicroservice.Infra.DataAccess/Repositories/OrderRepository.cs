@@ -18,14 +18,23 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Repositorie
         public async Task<IEnumerable<Order>> FilterNewOrders(Guid storeId)
         {
             return await _context.Set<Order>()
-                .Where(o => o.StoreId.Equals(storeId))
+                .Where(o => o.StoreId.Equals(storeId) && o.OrderStatus.Equals(OrderStatus.PaymentConfirmed))
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Order>> FilterOrdersOfCustomer(Guid customerId)
+        public async Task<IEnumerable<Order>> FilterOpenedOrdersOfCustomer(Guid customerId)
         {
             return await _context.Set<Order>()
-                .Where(o => o.CustomerId.Equals(customerId))
+                .Where(o => o.CustomerId.Equals(customerId) && !(
+                        o.OrderStatus.Equals(OrderStatus.Delivered) || o.OrderStatus.Equals(OrderStatus.Cancelled)))
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Order>> FilterClosedOrdersOfCustomer(Guid customerId)
+        {
+            return await _context.Set<Order>()
+                .Where(o => o.CustomerId.Equals(customerId) && (
+                        o.OrderStatus.Equals(OrderStatus.Delivered) || o.OrderStatus.Equals(OrderStatus.Cancelled)))
                 .ToListAsync();
         }
     }

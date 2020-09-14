@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IConsumer.MicroServices.Common.Application\IConsumer.MicroServices.Common.Application.csproj" />
+    <ProjectReference Include="..\IConsumer.Microservices.OrderMicroservice.Domain\IConsumer.Microservices.OrderMicroservice.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

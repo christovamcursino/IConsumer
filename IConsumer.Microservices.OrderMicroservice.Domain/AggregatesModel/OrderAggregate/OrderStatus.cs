@@ -12,6 +12,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
         PaymentDenied = 3,
         Received = 4,
         Ready = 5,
-        Delivered = 6
+        Delivered = 6,
+        Cancelled = 7
     }
 }

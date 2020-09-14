@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IConsumer.MicroServices.Common.Api\IConsumer.MicroServices.Common.Api.csproj" />
+    <ProjectReference Include="..\IConsumer.MicroServices.OrderMicroservice.Application\IConsumer.MicroServices.OrderMicroservice.Application.csproj" />
     <ProjectReference Include="..\IConsumer.Microservices.OrderMicroservice.CrossCutting\IConsumer.Microservices.OrderMicroservice.CrossCutting.csproj" />
   </ItemGroup>
 

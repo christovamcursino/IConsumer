@@ -8,7 +8,8 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
 {
     public interface IOrderRepository : IAsyncRepository<Guid, Order>
     {
-        public Task<IEnumerable<Order>> FilterOrdersOfCustomer(Guid customerId);
+        public Task<IEnumerable<Order>> FilterOpenedOrdersOfCustomer(Guid customerId);
+        public Task<IEnumerable<Order>> FilterClosedOrdersOfCustomer(Guid customerId);
         public Task<IEnumerable<Order>> FilterNewOrders(Guid storeId);
     }
 }

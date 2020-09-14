@@ -33,9 +33,14 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
             return order;
         }
 
-        public async Task<IEnumerable<Order>> GetCustomerOrders(Guid customerId)
+        public async Task<IEnumerable<Order>> GetCustomerClosedOrders(Guid customerId)
         {
-            return await _orderRepository.FilterOrdersOfCustomer(customerId);
+            return await _orderRepository.FilterClosedOrdersOfCustomer(customerId);
+        }
+
+        public async Task<IEnumerable<Order>> GetCustomerOpenedOrders(Guid customerId)
+        {
+            return await _orderRepository.FilterOpenedOrdersOfCustomer(customerId);
         }
 
         public async Task<IEnumerable<Order>> GetStoreNewOrders(Guid storeId)
@@ -51,10 +56,15 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
             //TODO: enviar para pagamento
         }
 
-        public async Task<bool> SetOrderStatus(Guid orderId, OrderStatus orderStatus)
+        public async Task<bool> SetOrderStatus(Guid storeId, Guid orderId, OrderStatus orderStatus)
         {
-            _uow.BeginTransaction();
             var order = await _orderRepository.ReadAsync(orderId);
+            if (! order.StoreId.Equals(storeId))
+            {
+                //Pedido nao e da loja logada.
+                return false;
+            }
+            _uow.BeginTransaction();
             order.OrderStatus = orderStatus;
             _orderRepository.Update(order);
             _orderStatusService.AddTracking(orderId, orderStatus);
