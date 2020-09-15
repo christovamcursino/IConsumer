@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "mssql3": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/iconsumer-ccursino-db-server/databases/IConsumer-ccursino-DB",
+      "type": "mssql.azure",
+      "connectionId": "IdentityDbConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql5": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/iconsumer-ccursino-db-server/databases/IConsumer-ccursino-DB",
+      "type": "mssql.azure",
+      "connectionId": "AdminAuditLogDbConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql4": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/iconsumer-ccursino-db-server/databases/IConsumer-ccursino-DB",
+      "type": "mssql.azure",
+      "connectionId": "ConfigurationDbConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/iconsumer-ccursino-db-server/databases/IConsumer-ccursino-DB",
+      "type": "mssql.azure",
+      "connectionId": "PersistedGrantDbConnection",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/iconsumer-ccursino-db-server/databases/IConsumer-ccursino-DB",
+      "type": "mssql.azure",
+      "connectionId": "AdminLogDbConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
