@@ -1,6 +1,7 @@
 ﻿using IConsumer.Microservices.OrderMicroservice.Application.CQRS.Commands;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate;
 using IConsumer.MicroServices.Common.Application.Interfaces.CQRS.Messaging;
+using IConsumer.MicroServices.OrderMicroservice.Application.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,9 +20,9 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
             _bus = mediatorHandler;
         }
 
-        public Task<bool> ChangeOrderStatus(Guid storeId, Guid orderId, OrderStatus orderStatus)
+        public Task<bool> ChangeOrderStatus(Guid storeId, Guid orderId, ChangeStatusViewModel orderStatus)
         {
-            return _orderService.SetOrderStatus(storeId, orderId, orderStatus);
+            return _orderService.SetOrderStatus(storeId, orderId, orderStatus.OrderStatus);
         }
 
         public async Task<Order> CreateOrderAsync(Guid customerId, Guid tableId, ICollection<OrderItem> orderItems)
@@ -36,6 +37,11 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
         public async Task<IEnumerable<Order>> GetCustomerOpenedOrders(Guid customerId)
         {
             return await _orderService.GetCustomerOpenedOrders(customerId);
+        }
+
+        public async Task<Order> GetOrder(Guid orderId)
+        {
+            return await _orderService.GetOrder(orderId);
         }
 
         public async Task<IEnumerable<Order>> GetStoreNewOrders(Guid storeId)

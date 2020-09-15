@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Model\" />
+    <Compile Remove="Controllers\Model\**" />
+    <Content Remove="Controllers\Model\**" />
+    <EmbeddedResource Remove="Controllers\Model\**" />
+    <None Remove="Controllers\Model\**" />
   </ItemGroup>
 
   <ItemGroup>

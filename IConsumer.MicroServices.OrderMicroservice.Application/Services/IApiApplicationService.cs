@@ -1,4 +1,5 @@
 ﻿using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate;
+using IConsumer.MicroServices.OrderMicroservice.Application.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,8 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
 
         Task<IEnumerable<Order>> GetCustomerOpenedOrders(Guid customerId);
         Task<IEnumerable<Order>> GetStoreNewOrders(Guid storeId);
-        Task<bool> ChangeOrderStatus(Guid storeId, Guid orderId, OrderStatus orderStatus);
+        Task<bool> ChangeOrderStatus(Guid storeId, Guid orderId, ChangeStatusViewModel orderStatus);
+
+        Task<Order> GetOrder(Guid orderId);
     }
 }

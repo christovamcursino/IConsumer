@@ -43,6 +43,11 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
             return await _orderRepository.FilterOpenedOrdersOfCustomer(customerId);
         }
 
+        public async Task<Order> GetOrder(Guid id)
+        {
+            return await _orderRepository.ReadAsync(id);
+        }
+
         public async Task<IEnumerable<Order>> GetStoreNewOrders(Guid storeId)
         {
             return await _orderRepository.FilterNewOrders(storeId);

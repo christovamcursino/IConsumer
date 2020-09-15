@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate;
 using IConsumer.MicroServices.Common.Api;
+using IConsumer.MicroServices.OrderMicroservice.Application.Services;
+using IConsumer.MicroServices.OrderMicroservice.Application.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,37 +18,48 @@ namespace IConsumer.MicroServices.OrderMicroservice.Api.Controllers
     {
         private readonly IApiApplicationService _applicationService;
 
+        public OrderController(IApiApplicationService applicationService)
+        {
+            _applicationService = applicationService;
+        }
 
         // GET: api/<OrderController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("new-orders")]
+        public async Task<IEnumerable<Order>> GetNewOrders()
         {
-            return new string[] { "value1", "value2" };
+            //TODO: o id do estabelecimento vira do Jwt
+            Guid storeId = Guid.Empty;
+            return await _applicationService.GetStoreNewOrders(storeId);
         }
 
         // GET api/<OrderController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{orderId}")]
+        public async Task<Order> Get(Guid orderId)
         {
-            return "value";
+            return await _applicationService.GetOrder(orderId);
         }
 
         // POST api/<OrderController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("table/{tableId}")]
+        public async Task<IActionResult> PostOrder(Guid tableId, [FromBody] Order order)
         {
+            //bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid customerId);
+            //if (!validId)
+            //return BadRequest("Not a valid userId");
+            var customerId = Guid.Empty;
+
+            order = await _applicationService.CreateOrderAsync(customerId, tableId, order.OrderItems);
+
+            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
         }
 
         // PUT api/<OrderController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{orderId}/status")]
+        public async Task Put(Guid orderId, [FromBody] ChangeStatusViewModel orderStatus)
         {
-        }
-
-        // DELETE api/<OrderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            //TODO: o id do estabelecimento vira do Jwt
+            Guid storeId = Guid.Empty;
+            await _applicationService.ChangeOrderStatus(storeId, orderId, orderStatus);
         }
     }
 }
