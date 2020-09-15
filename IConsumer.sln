@@ -123,6 +123,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.MicroServices.Ord
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.Common.Infra.Messaging", "IConsumer.Microservices.Common.Infra.Messaging\IConsumer.Microservices.Common.Infra.Messaging.csproj", "{8E64F199-6D2B-4120-81EE-E29F6B232534}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.Microservices.Common.Infra.Helper", "IConsumer.Microservices.Common.Infra.Helper\IConsumer.Microservices.Common.Infra.Helper.csproj", "{5FF2FB54-1F58-4F2D-BBD1-B2F9EE5E01C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -257,6 +259,10 @@ Global
 		{8E64F199-6D2B-4120-81EE-E29F6B232534}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E64F199-6D2B-4120-81EE-E29F6B232534}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E64F199-6D2B-4120-81EE-E29F6B232534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF2FB54-1F58-4F2D-BBD1-B2F9EE5E01C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF2FB54-1F58-4F2D-BBD1-B2F9EE5E01C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF2FB54-1F58-4F2D-BBD1-B2F9EE5E01C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF2FB54-1F58-4F2D-BBD1-B2F9EE5E01C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -319,6 +325,7 @@ Global
 		{CF4F3D50-ED83-44CA-B30E-53E7C3DE1B3F} = {D68645D1-C2FA-4F3D-9CC4-A23AD7294A8C}
 		{EF943102-AE44-421B-8866-8F19F00D9278} = {C209D27E-6CEF-47D9-927E-C136A3B5A3CD}
 		{8E64F199-6D2B-4120-81EE-E29F6B232534} = {6DDC6524-456E-473C-A6C0-17634397CA2C}
+		{5FF2FB54-1F58-4F2D-BBD1-B2F9EE5E01C1} = {6DDC6524-456E-473C-A6C0-17634397CA2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {285D8B8A-ECDA-4959-AD8F-0DED65D860B4}

@@ -12,4 +12,26 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IConsumer.Microservices.Common.Infra.Helper\IConsumer.Microservices.Common.Infra.Helper.csproj" />
+    <ProjectReference Include="..\IConsumer.Microservices.Common.Infra.Messaging\IConsumer.Microservices.Common.Infra.Messaging.csproj" />
+    <ProjectReference Include="..\IConsumer.MicroServices.OrderMicroservice.Application\IConsumer.MicroServices.OrderMicroservice.Application.csproj" />
+    <ProjectReference Include="..\IConsumer.Microservices.OrderMicroservice.Infra.DataAccess\IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
