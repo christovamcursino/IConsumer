@@ -6,12 +6,14 @@ using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggr
 using IConsumer.MicroServices.Common.Api;
 using IConsumer.MicroServices.OrderMicroservice.Application.Services;
 using IConsumer.MicroServices.OrderMicroservice.Application.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace IConsumer.MicroServices.OrderMicroservice.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : CustomBaseController
@@ -27,8 +29,10 @@ namespace IConsumer.MicroServices.OrderMicroservice.Api.Controllers
         [HttpGet("new-orders")]
         public async Task<IEnumerable<Order>> GetNewOrders()
         {
-            //TODO: o id do estabelecimento vira do Jwt
-            Guid storeId = Guid.Empty;
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
             return await _applicationService.GetStoreNewOrders(storeId);
         }
 
@@ -43,11 +47,10 @@ namespace IConsumer.MicroServices.OrderMicroservice.Api.Controllers
         [HttpPost("table/{tableId}")]
         public async Task<IActionResult> PostOrder(Guid tableId, [FromBody] Order order)
         {
-            //bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid customerId);
-            //if (!validId)
-            //return BadRequest("Not a valid userId");
-            var customerId = Guid.Empty;
-
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid customerId);
+            if (!validId)
+                return BadRequest("Not a valid userId");
+            
             order = await _applicationService.CreateOrderAsync(customerId, tableId, order.OrderItems);
 
             return CreatedAtAction("GetOrder", new { id = order.Id }, order);
@@ -57,8 +60,10 @@ namespace IConsumer.MicroServices.OrderMicroservice.Api.Controllers
         [HttpPut("{orderId}/status")]
         public async Task Put(Guid orderId, [FromBody] ChangeStatusViewModel orderStatus)
         {
-            //TODO: o id do estabelecimento vira do Jwt
-            Guid storeId = Guid.Empty;
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
             await _applicationService.ChangeOrderStatus(storeId, orderId, orderStatus);
         }
     }
