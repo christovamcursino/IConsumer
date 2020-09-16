@@ -17,6 +17,7 @@ namespace IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Migration
                 {
                     Id = table.Column<Guid>(nullable: false),
                     StoreId = table.Column<Guid>(nullable: false),
+                    Disposal = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

@@ -5,12 +5,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IConsumer.Microservices.CustomerMicroservice.Domain\IConsumer.Microservices.CustomerMicroservice.Domain.csproj" />
     <ProjectReference Include="..\IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess\IConsumer.Microservices.CustomerMicroservice.Infra.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

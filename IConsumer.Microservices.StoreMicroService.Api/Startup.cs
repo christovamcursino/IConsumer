@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using IConsumer.Microservices.StoreMicroservice.CrossCutting;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.IdentityModel.Logging;
 
 namespace IConsumer.Microservices.StoreMicroService.Api
 {
@@ -24,11 +26,15 @@ namespace IConsumer.Microservices.StoreMicroService.Api
             );
             services.AddDbContext();
             services.AddServices();
+
+            services.AddIdentityAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseAuthentication();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -6,12 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\IConsumer.Microservices.ProcuctMicroservice.Domain\IConsumer.Microservices.ProcuctMicroservice.Domain.csproj" />
-    <ProjectReference Include="..\IConsumer.Microservices.ProductMicroservice.Infra.DataAccess\IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>

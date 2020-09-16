@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="db_connection_string" xml:space="preserve">
-    <value>Server=tcp:iconsumer-ccursino-db-server.database.windows.net,1433;Initial Catalog=IConsumer-ccursino-DB;Persist Security Info=False;User ID=ccursino;Password=Infnet@2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</value>
+  <data name="AuthorityServer" xml:space="preserve">
+    <value>https://iconsumer-ccursino-iam-microservice-identity.azurewebsites.net</value>
   </data>
 </root>

@@ -51,6 +51,9 @@ namespace IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Migration
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("Disposal")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 

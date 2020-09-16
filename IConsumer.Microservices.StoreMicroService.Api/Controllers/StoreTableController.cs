@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.StoreAggregate;
 using IConsumer.Microservices.StoreMicroService.Api.Controllers.Model;
 using IConsumer.MicroServices.Common.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StoreTableController : CustomBaseController
@@ -22,7 +24,6 @@ namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
             _storeService = storeService;
         }
 
-
         // GET api/<StoreTableController>/5
         [HttpGet("{id}")]
         public StoreTable Get(Guid id)
@@ -32,9 +33,17 @@ namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
 
         // POST api/<Teste>
         [HttpPost("add-tables")]
-        public void Post([FromBody] AddTableModel addTablesModel)
+        public Store Post([FromBody] AddTableModel addTablesModel)
         {
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
+            addTablesModel.StoreId = storeId;
+
             var result = _storeService.AddTablesToStore(addTablesModel.StoreId, addTablesModel.TablesAmount);
+
+            return result;
         }
     }
 }

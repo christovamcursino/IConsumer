@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Properties {
+namespace IConsumer.Microservices.StoreMicroservice.CrossCutting.Properties {
     using System;
     
     
@@ -39,8 +39,7 @@ namespace IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Propertie
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Properties.Resources" +
-                            "", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("IConsumer.Microservices.StoreMicroservice.CrossCutting.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,11 +61,11 @@ namespace IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Propertie
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server=tcp:iconsumer-ccursino-db-server.database.windows.net,1433;Initial Catalog=IConsumer-ccursino-DB;Persist Security Info=False;User ID=ccursino;Password=Infnet@2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;.
+        ///   Looks up a localized string similar to https://iconsumer-ccursino-iam-microservice-identity.azurewebsites.net.
         /// </summary>
-        internal static string db_connection_string {
+        internal static string AuthorityServer {
             get {
-                return ResourceManager.GetString("db_connection_string", resourceCulture);
+                return ResourceManager.GetString("AuthorityServer", resourceCulture);
             }
         }
     }

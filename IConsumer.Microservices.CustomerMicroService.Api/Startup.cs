@@ -27,11 +27,15 @@ namespace IConsumer.Microservices.CustomerMicroService.Api
             );
             services.AddDbContext();
             services.AddServices();
+
+            services.AddIdentityAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseAuthentication();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

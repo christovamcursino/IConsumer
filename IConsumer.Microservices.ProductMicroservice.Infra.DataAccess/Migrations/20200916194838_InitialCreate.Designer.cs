@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20200816134827_InitialCreate")]
+    [Migration("20200916194838_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,6 +52,9 @@ namespace IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Migration
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Disposal")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

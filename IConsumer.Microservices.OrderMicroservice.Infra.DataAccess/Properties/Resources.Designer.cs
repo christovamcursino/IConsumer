@@ -61,7 +61,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Properties 
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server = localhost; Database = ICustomer; User = ICustomerApp; Password = customer123;.
+        ///   Looks up a localized string similar to Server=tcp:iconsumer-ccursino-db-server.database.windows.net,1433;Initial Catalog=IConsumer-ccursino-DB;Persist Security Info=False;User ID=ccursino;Password=Infnet@2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;.
         /// </summary>
         internal static string db_connection_string {
             get {

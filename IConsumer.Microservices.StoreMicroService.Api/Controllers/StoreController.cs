@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.StoreAggregate;
 using IConsumer.MicroServices.Common.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StoreController : CustomBaseController
@@ -22,27 +24,37 @@ namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
         }
 
         // GET api/<StoreController>/5
-        [HttpGet("{id}")]
+        [HttpGet]
         public Store Get(Guid id)
         {
-            return _storeService.GetStore(id);
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
+            return _storeService.GetStore(storeId);
         }
 
         // POST api/<StoreController>
         [HttpPost]
         public Store Post([FromBody] Store store)
         {
-            //TODO: o id vira do IAM
-            Guid id = Guid.NewGuid();
-            var result = _storeService.AddStore(id, store);
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
+            var result = _storeService.AddStore(storeId, store);
             return result;
         }
 
         // PUT api/<StoreController>/5
-        [HttpPut("{id}")]
-        public void Put(Guid id, [FromBody] Store store)
+        [HttpPut]
+        public void Put([FromBody] Store store)
         {
-            _storeService.EditStore(id, store);
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
+            _storeService.EditStore(storeId, store);
         }
 
 

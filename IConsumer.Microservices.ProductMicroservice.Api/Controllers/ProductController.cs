@@ -1,5 +1,6 @@
 ﻿using IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.ProductAggregate;
 using IConsumer.MicroServices.Common.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,6 +8,7 @@ using System;
 
 namespace IConsumer.Microservices.ProductMicroservice.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : CustomBaseController

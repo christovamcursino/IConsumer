@@ -1,5 +1,6 @@
 ﻿using IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.ProductAggregate;
 using IConsumer.MicroServices.Common.Api;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 
 namespace IConsumer.Microservices.ProductMicroservice.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductTypeController : CustomBaseController
@@ -22,9 +24,13 @@ namespace IConsumer.Microservices.ProductMicroservice.Api.Controllers
         }
 
         // GET: api/<ProductTypeController>
-        [HttpGet("store/{storeId}")]
-        public IEnumerable<ProductType> GetProductTypes(Guid storeId)
+        [HttpGet]
+        public IEnumerable<ProductType> GetProductTypes()
         {
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
             return _productTypeService.GetProductTypes(storeId);
         }
 
@@ -45,7 +51,10 @@ namespace IConsumer.Microservices.ProductMicroservice.Api.Controllers
         [HttpPost]
         public ProductType Post([FromBody] ProductType productType)
         {
-            var storeId = productType.StoreId;
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
             var result = _productTypeService.AddProductType(storeId, productType);
             return result;
         }

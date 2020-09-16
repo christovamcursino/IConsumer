@@ -4,10 +4,13 @@ using IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.StoreAggr
 using IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.Context;
 using IConsumer.Microservices.StoreMicroservice.Infra.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Builder;
 
 namespace IConsumer.Microservices.StoreMicroservice.CrossCutting
 {
@@ -30,7 +33,18 @@ namespace IConsumer.Microservices.StoreMicroservice.CrossCutting
 
             //IoW
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
 
+        public static void AddIdentityAuthorization(this IServiceCollection services)
+        {
+            services.AddAuthorization();
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = Properties.Resources.AuthorityServer;
+                    options.RequireHttpsMetadata = false;
+                    options.ApiName = "StoreMicroservice_ApiResource";
+                });
         }
     }
 }
