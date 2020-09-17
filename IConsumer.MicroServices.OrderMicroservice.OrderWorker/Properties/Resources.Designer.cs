@@ -61,7 +61,7 @@ namespace IConsumer.MicroServices.OrderMicroservice.OrderWorker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to xxx.
+        ///   Looks up a localized string similar to Endpoint=sb://iconsumer-ccursino-servicebus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=njYv1pLbJ5gg5rFXIwRRtpJp88YlvxzUlu1o/xGfxFA=.
         /// </summary>
         internal static string ServiceBusConnectionString {
             get {

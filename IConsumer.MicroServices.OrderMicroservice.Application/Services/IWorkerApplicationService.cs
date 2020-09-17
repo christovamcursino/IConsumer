@@ -8,6 +8,6 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
 {
     public interface IWorkerApplicationService
     {
-        Task ProcessOrderAsync(ProcessOrderCommand processOrderCommand);
+        public Task ProcessOrderAsync(ProcessOrderCommand processOrderCommand);
     }
 }

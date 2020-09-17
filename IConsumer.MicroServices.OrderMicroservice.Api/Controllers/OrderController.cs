@@ -45,15 +45,16 @@ namespace IConsumer.MicroServices.OrderMicroservice.Api.Controllers
 
         // POST api/<OrderController>
         [HttpPost("table/{tableId}")]
-        public async Task<IActionResult> PostOrder(Guid tableId, [FromBody] Order order)
+        public async Task<Order> PostOrder(Guid tableId, [FromBody] CreateOrderViewModel orderViewModel)
         {
             bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid customerId);
             if (!validId)
-                return BadRequest("Not a valid userId");
-            
-            order = await _applicationService.CreateOrderAsync(customerId, tableId, order.OrderItems);
+                throw new Exception("Invalid user id");
 
-            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+            var order = await _applicationService.CreateOrderAsync(customerId, tableId, orderViewModel);
+
+            //return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+            return order;
         }
 
         // PUT api/<OrderController>/5

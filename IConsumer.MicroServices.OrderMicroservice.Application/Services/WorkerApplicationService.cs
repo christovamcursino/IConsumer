@@ -27,7 +27,10 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
             orderProcessedEvent.Success = true;
 
             if (!commandHandlerSuccess)
+            {
+                Console.WriteLine("Falha no tratamento da mensagem");
                 orderProcessedEvent.Success = false;
+            }
 
             await _bus.EnqueueAsync(orderProcessedEvent, OrderProcessedEvent.EventQueueName);
         }

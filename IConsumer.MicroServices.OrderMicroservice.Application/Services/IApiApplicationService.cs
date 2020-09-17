@@ -9,7 +9,7 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
 {
     public interface IApiApplicationService
     {
-        Task<Order> CreateOrderAsync(Guid customerId, Guid tableId, ICollection<OrderItem> orderItems);
+        Task<Order> CreateOrderAsync(Guid customerId, Guid tableId, CreateOrderViewModel orderViewModel);
 
         Task<IEnumerable<Order>> GetCustomerOpenedOrders(Guid customerId);
         Task<IEnumerable<Order>> GetStoreNewOrders(Guid storeId);

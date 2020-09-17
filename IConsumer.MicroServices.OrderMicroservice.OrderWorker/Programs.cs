@@ -14,12 +14,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.ProductAggregate;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.StoreAggregate;
 
 namespace IConsumer.MicroServices.OrderMicroservice.OrderWorker
 {
-    class Program
+    public class Program
     {
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = new HostBuilder();
             builder.ConfigureServices(services =>
@@ -30,6 +32,10 @@ namespace IConsumer.MicroServices.OrderMicroservice.OrderWorker
                 services.AddSingleton<IOrderRepository, OrderRepository>();
                 services.AddSingleton<IOrderService, OrderService>();
                 services.AddSingleton<ISerializerService, SerializerService>();
+                services.AddSingleton<IProductQueryRepository, ProductMicroserviceQueryRepository>();
+                services.AddSingleton<IStoreTableQueryRepository, StoreTableMicroserviceQueryRepository>();
+                services.AddSingleton<IProductQueryService, ProductQueryService>();
+                services.AddSingleton<IStoreTableQueryService, StoreTableQueryService>();
                 services.AddSingleton<IWorkerApplicationService, WorkerApplicationService>();
             }).ConfigureWebJobs(b =>
             {

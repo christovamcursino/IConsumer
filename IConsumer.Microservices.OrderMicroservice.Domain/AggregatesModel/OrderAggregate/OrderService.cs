@@ -1,4 +1,6 @@
 ﻿using IConsumer.Microservices.Common.Domain.UoW;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.ProductAggregate;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.StoreAggregate;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,12 +13,16 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
         private IUnitOfWork _uow;
         private IOrderRepository _orderRepository;
         private IOrderStatusService _orderStatusService;
+        private IStoreTableQueryService _storeTableQueryService;
+        private IProductQueryService _productQueryService;
 
-        public OrderService(IUnitOfWork uow, IOrderRepository orderRepository, IOrderStatusService orderStatusService)
+        public OrderService(IUnitOfWork uow, IOrderRepository orderRepository, IOrderStatusService orderStatusService, IStoreTableQueryService storeTableQueryService, IProductQueryService productQueryService)
         {
             _uow = uow;
             _orderRepository = orderRepository;
             _orderStatusService = orderStatusService;
+            _storeTableQueryService = storeTableQueryService;
+            _productQueryService = productQueryService;
         }
 
         public Order CreateOrder(Guid customerId, Guid tableId, ICollection<OrderItem> orderItems)
@@ -24,6 +30,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
             var order = new Order
             {
                 Id = Guid.NewGuid(),
+                TableId = tableId,
                 OrderDate = DateTime.Now,
                 CustomerId = customerId,
                 OrderItems = orderItems,
@@ -55,6 +62,17 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
 
         public async Task<bool> ProcessOrderAsync(Order order)
         {
+            //Recupera o ID da loja e os dados de cada produto
+            StoreTable storeTable = await _storeTableQueryService.GetStoreTableAsync(order.TableId);
+            order.StoreId = storeTable.Id;
+
+            foreach(var item in order.OrderItems)
+            {
+                Product prod = await _productQueryService.GetProductAsync(item.ProductId);
+                item.Price = prod.Price;
+                item.ProductName = prod.Name;
+            }
+
             _uow.BeginTransaction();
             await _orderRepository.CreateAsync(order);
             return await _uow.SaveChangesAsync() > 0;

@@ -4,6 +4,8 @@ using IConsumer.Microservices.Common.Infra.Helper;
 using IConsumer.Microservices.Common.Infra.Messaging.Services;
 using IConsumer.Microservices.OrderMicroservice.Application.CQRS.Commands;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.ProductAggregate;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.StoreAggregate;
 using IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Context;
 using IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Repositories;
 using IConsumer.MicroServices.OrderMicroservice.Application.Services;
@@ -19,13 +21,18 @@ namespace IConsumer.MicroServices.OrderMicroservice.OrderWorker
 {
     public class Functions
     {
-        private static DbContext context = new OrderContext();
+        private static DbContext _context = new OrderContext();
 
+        //IUnitOfWork uow, IOrderRepository orderRepository, IOrderStatusService orderStatusService, IStoreTableQueryService storeTableQueryService)
         private static IWorkerApplicationService workerApplicationService = new WorkerApplicationService(
             new OrderCommandHandler(
-                new OrderService(new UnitOfWork(context),
-                    new OrderRepository(context),
-                    new OrderStatusService(new UnitOfWork(context), new OrderTrackingRepository(context)))), 
+                new OrderService(new UnitOfWork(_context),
+                    new OrderRepository(_context),
+                    new OrderStatusService(new UnitOfWork(_context), new OrderTrackingRepository(_context)),
+                    new StoreTableQueryService(new StoreTableMicroserviceQueryRepository(new SerializerService())),
+                    new ProductQueryService(new ProductMicroserviceQueryRepository(new SerializerService()))
+                    )
+                ), 
             new AzureServiceBusQueue());
         private static ISerializerService serializerService = new SerializerService();
 
@@ -36,11 +43,17 @@ namespace IConsumer.MicroServices.OrderMicroservice.OrderWorker
         //}
 
         //[Singleton("ProductUpdateLock", SingletonScope.Host)]
-        public static async Task ProcessOrderCommandFunction([ServiceBusTrigger(ProcessOrderCommand.CommandQueueName)] string message, ILogger logger)
+        public static Task ProcessOrderCommandFunction([ServiceBusTrigger(ProcessOrderCommand.CommandQueueName)] string message, ILogger logger)
         {
             logger.LogInformation(message);
+
+            Console.WriteLine("Chegou mensagem: " + message);
+
             var command = serializerService.Deserialize<ProcessOrderCommand>(message);
-            await workerApplicationService.ProcessOrderAsync(command);
+            
+            workerApplicationService.ProcessOrderAsync(command);
+
+            return Task.CompletedTask;
         }
     }
 }

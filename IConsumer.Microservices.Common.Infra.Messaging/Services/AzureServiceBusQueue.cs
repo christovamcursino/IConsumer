@@ -20,8 +20,14 @@ namespace IConsumer.Microservices.Common.Infra.Messaging.Services
 
         public async Task<bool> EnqueueAsync<T>(T command, string queueName)
         {
-            var message = JsonConvert.SerializeObject(command);
+            var message = JsonConvert.SerializeObject(command, Formatting.None,
+                new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+
             await SendMessageAsync(message, queueName);
+
             return true;
         }
 

@@ -25,8 +25,16 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
             return _orderService.SetOrderStatus(storeId, orderId, orderStatus.OrderStatus);
         }
 
-        public async Task<Order> CreateOrderAsync(Guid customerId, Guid tableId, ICollection<OrderItem> orderItems)
+        public async Task<Order> CreateOrderAsync(Guid customerId, Guid tableId, CreateOrderViewModel orderViewModel)
         {
+            ICollection<OrderItem> orderItems = new List<OrderItem>();
+            foreach(var item in orderViewModel.OrderItems) 
+            {
+                orderItems.Add(new OrderItem { 
+                    Id = Guid.NewGuid(), ProductId = item.ProductId, Amount = item.Amount 
+                });
+            }
+
             var order = _orderService.CreateOrder(customerId, tableId, orderItems);
             var processOrderCommand = new ProcessOrderCommand(order);
             await _bus.EnqueueAsync(processOrderCommand, ProcessOrderCommand.CommandQueueName);
