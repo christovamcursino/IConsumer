@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IConsumer.App.Domain\IConsumer.App.Domain.csproj" />
+    <ProjectReference Include="..\IConsumer.App.Infra.DataAccess\IConsumer.App.Infra.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>

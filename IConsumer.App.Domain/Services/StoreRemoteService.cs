@@ -31,5 +31,10 @@ namespace IConsumer.App.Domain.Services
         {
             return await _storeRepository.ReadAsync(storeId);
         }
+
+        public async Task<StoreTable> GetStoreTableAsync(Guid storeTableId)
+        {
+            return await _storeRepository.ReadStoreTableAsync(storeTableId);
+        }
     }
 }

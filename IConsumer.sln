@@ -135,9 +135,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Domain", "2-Domain", "{E4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infra", "3-Infra", "{A5B7F559-48F9-470A-B8A5-C6541CD56FB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.App.Infra.DataAccess", "IConsumer.App.Infra.DataAccess\IConsumer.App.Infra.DataAccess.csproj", "{2472313D-95EF-4FF5-9A37-E287B133DC98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.App.Infra.DataAccess", "IConsumer.App.Infra.DataAccess\IConsumer.App.Infra.DataAccess.csproj", "{2472313D-95EF-4FF5-9A37-E287B133DC98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.App.Domain", "IConsumer.App.Domain\IConsumer.App.Domain.csproj", "{804CAACD-E5B5-46CE-A5A9-264C6954C01E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.App.Domain", "IConsumer.App.Domain\IConsumer.App.Domain.csproj", "{804CAACD-E5B5-46CE-A5A9-264C6954C01E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{F4316F3A-F8E8-46B5-A51C-9D47DCA967A4}"
 EndProject
@@ -149,9 +149,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.App.UWP", "IConsu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.App.Android", "IConsumer.App\IConsumer.App.Android\IConsumer.App.Android.csproj", "{E86406E5-B09C-44BB-AF5C-536F747017D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.App", "IConsumer.App\IConsumer.App\IConsumer.App.csproj", "{6DEAC62E-FC5C-4712-A503-8CBCA49A8374}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.App", "IConsumer.App\IConsumer.App\IConsumer.App.csproj", "{6DEAC62E-FC5C-4712-A503-8CBCA49A8374}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.App.Common.Domain", "IConsumer.App.Common.Domain\IConsumer.App.Common.Domain.csproj", "{A08FD726-0AD4-4E7D-A577-5CA841510C30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IConsumer.App.Common.Domain", "IConsumer.App.Common.Domain\IConsumer.App.Common.Domain.csproj", "{A08FD726-0AD4-4E7D-A577-5CA841510C30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IConsumer.App.Application", "IConsumer.App.Application\IConsumer.App.Application.csproj", "{CD732985-9CC9-4883-BBE3-40A671EA7507}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -817,6 +819,22 @@ Global
 		{A08FD726-0AD4-4E7D-A577-5CA841510C30}.Release|x64.Build.0 = Release|Any CPU
 		{A08FD726-0AD4-4E7D-A577-5CA841510C30}.Release|x86.ActiveCfg = Release|Any CPU
 		{A08FD726-0AD4-4E7D-A577-5CA841510C30}.Release|x86.Build.0 = Release|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Debug|x64.Build.0 = Debug|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Debug|x86.Build.0 = Debug|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Release|ARM.Build.0 = Release|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Release|x64.ActiveCfg = Release|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Release|x64.Build.0 = Release|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Release|x86.ActiveCfg = Release|Any CPU
+		{CD732985-9CC9-4883-BBE3-40A671EA7507}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -894,6 +912,7 @@ Global
 		{E86406E5-B09C-44BB-AF5C-536F747017D2} = {8CA29099-8CB4-4A2E-B2A5-2107122BA4C2}
 		{6DEAC62E-FC5C-4712-A503-8CBCA49A8374} = {8CA29099-8CB4-4A2E-B2A5-2107122BA4C2}
 		{A08FD726-0AD4-4E7D-A577-5CA841510C30} = {FBF9967A-3FE4-4378-A180-DC85E766AD8D}
+		{CD732985-9CC9-4883-BBE3-40A671EA7507} = {D0783D23-7871-40B6-9B2F-60F788926412}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {285D8B8A-ECDA-4959-AD8F-0DED65D860B4}

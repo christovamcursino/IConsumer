@@ -11,5 +11,6 @@ namespace IConsumer.App.Domain.Interfaces.Repositories
         Task CreateAsync(Store store);
         Task<Store> ReadAsync(Guid storeId);
         Task<Store> AddTablesAsync(int amount);
+        Task<StoreTable> ReadStoreTableAsync(Guid storeTableId);
     }
 }

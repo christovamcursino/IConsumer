@@ -43,12 +43,23 @@ namespace IConsumer.App.Infra.DataAccess.Repositories
         public async Task<Store> ReadAsync(Guid storeId)
         {
             var client = getHttpClient();
-            var result = await client.GetAsync(_baseUrl + "/ " + storeId.ToString());
+            var result = await client.GetAsync(_baseUrl + "/" + storeId.ToString());
 
             var storeSerialized = await result.Content.ReadAsStringAsync();
             var store = _serializerService.Deserialize<Store>(storeSerialized);
 
             return store;
+        }
+
+        public async Task<StoreTable> ReadStoreTableAsync(Guid storeTableId)
+        {
+            var client = getHttpClient();
+            var result = await client.GetAsync(_baseUrl + "Table/" + storeTableId.ToString());
+
+            var storeTableSerialized = await result.Content.ReadAsStringAsync();
+            var storeTable = _serializerService.Deserialize<StoreTable>(storeTableSerialized);
+
+            return storeTable;
         }
     }
 }

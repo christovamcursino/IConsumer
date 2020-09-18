@@ -39,7 +39,7 @@ namespace IConsumer.App.Infra.DataAccess.Repositories
         public async Task<ProductType> ReadAsync(Guid productTypeId)
         {
             var client = getHttpClient();
-            var result = await client.GetAsync(_baseUrl + "/ " + productTypeId.ToString());
+            var result = await client.GetAsync(_baseUrl + "/" + productTypeId.ToString());
 
             var productTypeSerialized = await result.Content.ReadAsStringAsync();
             var productType = _serializerService.Deserialize<ProductType>(productTypeSerialized);
