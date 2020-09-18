@@ -8,7 +8,7 @@ namespace IConsumer.App.Domain.Interfaces.Services
 {
     public interface IOrderService
     {
-        Task CreateOrderAsync(Order order);
+        Task CreateOrderAsync(Order order, Guid tableId);
         Task<IEnumerable<Order>> GetStoreNewOrdersAsync();
         Task<IEnumerable<Order>> GetCustomerOpenOrdersAsync();
         Task<Order> UpdateOrderStatusAsync(Guid orderId, OrderStatus orderStatus);

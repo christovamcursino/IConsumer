@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IConsumer.Microservices.StoreMicroservice.Domain.AggregatesModel.StoreAggregate;
-using IConsumer.Microservices.StoreMicroService.Api.Controllers.Model;
+using IConsumer.Microservices.StoreMicroService.Api.Controllers.ViewModel;
 using IConsumer.MicroServices.Common.Api;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,9 +39,7 @@ namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
             if (!validId)
                 throw new Exception("Invalid user id");
 
-            addTablesModel.StoreId = storeId;
-
-            var result = _storeService.AddTablesToStore(addTablesModel.StoreId, addTablesModel.TablesAmount);
+            var result = _storeService.AddTablesToStore(storeId, addTablesModel.TablesAmount);
 
             return result;
         }
