@@ -4,6 +4,7 @@ using IConsumer.Microservices.Common.Infra.DataAccess.UoW;
 using IConsumer.Microservices.Common.Infra.Helper;
 using IConsumer.Microservices.Common.Infra.Messaging.Services;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.PaymentAggregate;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.ProductAggregate;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.StoreAggregate;
 using IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Context;
@@ -28,14 +29,15 @@ namespace IConsumer.Microservices.OrderMicroservice.CrossCutting
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderTrackingRepository, OrderTrackingRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRemoteRepository>();
 
             //Services
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderStatusService, OrderStatusService>();
             services.AddScoped<IProductQueryService, ProductQueryService>();
             services.AddScoped<IStoreTableQueryService, StoreTableQueryService>();
-
-
+            services.AddScoped<IPaymentService, PaymentService>();
+            
             //Commands
             services.AddScoped<IApiApplicationService, ApiApplicationService>();
             services.AddScoped<IMediatorHandler, AzureServiceBusQueue>();

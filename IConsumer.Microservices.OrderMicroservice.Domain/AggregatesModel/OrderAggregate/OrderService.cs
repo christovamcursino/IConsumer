@@ -1,8 +1,10 @@
 ﻿using IConsumer.Microservices.Common.Domain.UoW;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.PaymentAggregate;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.ProductAggregate;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.StoreAggregate;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,19 +12,22 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
 {
     public class OrderService : IOrderService
     {
-        private IUnitOfWork _uow;
-        private IOrderRepository _orderRepository;
-        private IOrderStatusService _orderStatusService;
-        private IStoreTableQueryService _storeTableQueryService;
-        private IProductQueryService _productQueryService;
+        private readonly IUnitOfWork _uow;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderStatusService _orderStatusService;
+        private readonly IStoreTableQueryService _storeTableQueryService;
+        private readonly IProductQueryService _productQueryService;
 
-        public OrderService(IUnitOfWork uow, IOrderRepository orderRepository, IOrderStatusService orderStatusService, IStoreTableQueryService storeTableQueryService, IProductQueryService productQueryService)
+        private readonly IPaymentService _paymentService;
+
+        public OrderService(IUnitOfWork uow, IOrderRepository orderRepository, IOrderStatusService orderStatusService, IStoreTableQueryService storeTableQueryService, IProductQueryService productQueryService, IPaymentService paymentService)
         {
             _uow = uow;
             _orderRepository = orderRepository;
             _orderStatusService = orderStatusService;
             _storeTableQueryService = storeTableQueryService;
             _productQueryService = productQueryService;
+            _paymentService = paymentService;
         }
 
         public Order CreateOrder(Guid customerId, Guid tableId, ICollection<OrderItem> orderItems)
@@ -75,8 +80,21 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
 
             _uow.BeginTransaction();
             await _orderRepository.CreateAsync(order);
-            return await _uow.SaveChangesAsync() > 0;
-            //TODO: enviar para pagamento
+            await _uow.SaveChangesAsync();
+
+            var paidInvoiceId = await _paymentService.ExecutePayment(order.Id, order.CustomerId, getOrderTotal(order));
+
+            if (paidInvoiceId != null)
+            {
+                //Invoice paid. Lets change order status
+                order.PaymentApproved = true;
+                order.PaymentId = paidInvoiceId.ToString();
+                _orderRepository.Update(order);
+                await _uow.SaveChangesAsync();
+                await SetOrderStatus(order.StoreId, order.Id, OrderStatus.PaymentConfirmed);
+                return true;
+            }
+            return false;
         }
 
         public async Task<bool> SetOrderStatus(Guid storeId, Guid orderId, OrderStatus orderStatus)
@@ -92,6 +110,11 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
             _orderRepository.Update(order);
             _orderStatusService.AddTracking(orderId, orderStatus);
             return await _uow.SaveChangesAsync() > 0;
+        }
+
+        private decimal getOrderTotal(Order order)
+        {
+            return order.OrderItems.Sum(o => o.Price * o.Amount);
         }
     }
 }

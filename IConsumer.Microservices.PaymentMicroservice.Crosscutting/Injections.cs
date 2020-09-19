@@ -42,7 +42,7 @@ namespace IConsumer.Microservices.PaymentMicroservice.Crosscutting
                 {
                     options.Authority = Properties.Resources.AuthorityServer;
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = "StoreMicroservice_ApiResource";
+                    options.ApiName = "PaymentMicroservice_ApiResource";
                 });
         }
     }

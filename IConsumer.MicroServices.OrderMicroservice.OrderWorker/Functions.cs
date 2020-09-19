@@ -4,6 +4,7 @@ using IConsumer.Microservices.Common.Infra.Helper;
 using IConsumer.Microservices.Common.Infra.Messaging.Services;
 using IConsumer.Microservices.OrderMicroservice.Application.CQRS.Commands;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.PaymentAggregate;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.ProductAggregate;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.StoreAggregate;
 using IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Context;
@@ -23,26 +24,19 @@ namespace IConsumer.MicroServices.OrderMicroservice.OrderWorker
     {
         private static DbContext _context = new OrderContext();
 
-        //IUnitOfWork uow, IOrderRepository orderRepository, IOrderStatusService orderStatusService, IStoreTableQueryService storeTableQueryService)
         private static IWorkerApplicationService workerApplicationService = new WorkerApplicationService(
             new OrderCommandHandler(
                 new OrderService(new UnitOfWork(_context),
                     new OrderRepository(_context),
                     new OrderStatusService(new UnitOfWork(_context), new OrderTrackingRepository(_context)),
                     new StoreTableQueryService(new StoreTableMicroserviceQueryRepository(new SerializerService())),
-                    new ProductQueryService(new ProductMicroserviceQueryRepository(new SerializerService()))
+                    new ProductQueryService(new ProductMicroserviceQueryRepository(new SerializerService())),
+                    new PaymentService(new PaymentRemoteRepository(new SerializerService()))
                     )
                 ), 
             new AzureServiceBusQueue());
         private static ISerializerService serializerService = new SerializerService();
 
-        //public Functions(IWorkerApplicationService workerApplicationService, ISerializerService serializerService)
-        //{
-        //    this.workerApplicationService = workerApplicationService;
-        //    this.serializerService = serializerService;
-        //}
-
-        //[Singleton("ProductUpdateLock", SingletonScope.Host)]
         public static Task ProcessOrderCommandFunction([ServiceBusTrigger(ProcessOrderCommand.CommandQueueName)] string message, ILogger logger)
         {
             logger.LogInformation(message);
