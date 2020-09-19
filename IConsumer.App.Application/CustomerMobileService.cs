@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,9 @@ namespace IConsumer.App.Application
 {
     public class CustomerMobileService : IAppCustomerService
     {
+        private StoreTable _currentTable;
+        private Store _currentStore;
+
         private ICustomerService _customerService;
         private IOrderService _orderService;
         private IProductService _productService;
@@ -24,14 +28,31 @@ namespace IConsumer.App.Application
 
         private string token;
 
+        public StoreTable CurrentTable { get => _currentTable; }
+        public Store CurrentStore { get => _currentStore; }
+
+        public async Task<bool> DoCheckIn(Guid storeTableId)
+        {
+            _currentTable = await GetTable(storeTableId);
+            if (_currentTable == null)
+            {
+                _currentStore = null;
+                return false;
+            }
+
+            _currentStore = await GetStore(CurrentTable.StoreId);
+
+            return true;
+        }
+
         public async Task AddCustomer(Customer customer)
         {
             await _customerService.CreateCustomerAsync(customer);
         }
 
-        public async Task CreateOrder(Guid storeTableId, Order order)
+        public async Task CreateOrder(Order order)
         {
-            await _orderService.CreateOrderAsync(order, storeTableId);
+            await _orderService.CreateOrderAsync(order, CurrentTable.Id);
         }
 
         public async Task<Customer> GetCustomer(Guid customerId)
@@ -44,9 +65,9 @@ namespace IConsumer.App.Application
             return await _orderService.GetCustomerOpenOrdersAsync();
         }
 
-        public async Task<IEnumerable<ProductType>> GetMenu(Guid storeId)
+        public async Task<IEnumerable<ProductType>> GetMenu()
         {
-            return await _productService.GetMenuAsync(storeId);
+            return await _productService.GetMenuAsync(CurrentStore.Id);
         }
 
         public async Task<Store> GetStore(Guid storeId)

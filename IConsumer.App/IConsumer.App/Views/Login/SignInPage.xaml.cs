@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IConsumer.App.Views.Checkin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace IConsumer.App.Views.Login
                 return;
             }
 
-            Navigation.InsertPageBefore(new MainPage(), this);
+            Navigation.InsertPageBefore(new CheckinPage(), this);
             Navigation.PopAsync().ConfigureAwait(false);
         }
 

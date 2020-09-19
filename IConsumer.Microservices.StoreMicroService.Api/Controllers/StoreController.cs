@@ -24,8 +24,15 @@ namespace IConsumer.Microservices.StoreMicroService.Api.Controllers
         }
 
         // GET api/<StoreController>/5
+        [HttpGet("{storeId}")]
+        public Store GetById(Guid storeId)
+        {
+            return _storeService.GetStore(storeId);
+        }
+
+        // GET api/<StoreController>/5
         [HttpGet]
-        public Store Get(Guid id)
+        public Store Get()
         {
             bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
             if (!validId)

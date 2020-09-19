@@ -17,7 +17,8 @@ namespace IConsumer.Microservices.ProductMicroservice.Infra.DataAccess.Repositor
         public IEnumerable<ProductType> GetByStoreId(Guid storeId)
         {
             return _context.Set<ProductType>()
-                .Where(o => o.StoreId.Equals(storeId));
+                .Where(o => o.StoreId.Equals(storeId))
+                .OrderBy(o => o.Disposal);
         }
     }
 }

@@ -40,7 +40,6 @@ namespace IConsumer.Microservices.ProcuctMicroservice.Domain.AggregatesModel.Pro
                     result.Add(item);
                 }
             }
-
             return result;
         }
 
