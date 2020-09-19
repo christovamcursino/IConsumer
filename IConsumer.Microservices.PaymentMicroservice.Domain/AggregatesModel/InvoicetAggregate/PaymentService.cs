@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IConsumer.Microservices.Common.Domain.UoW;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,10 +8,12 @@ namespace IConsumer.Microservices.PaymentMicroservice.Domain.AggregatesModel.Inv
     public class PaymentService : IPaymentService
     {
         private readonly IInvoiceRepository _invoiceRepository;
+        private IUnitOfWork _uow;
 
-        public PaymentService(IInvoiceRepository invoiceRepository)
+        public PaymentService(IInvoiceRepository invoiceRepository, IUnitOfWork uow)
         {
             _invoiceRepository = invoiceRepository;
+            _uow = uow;
         }
 
         public Invoice MockInvoicePayment(Guid customerId, Guid orderId, decimal InvoiceTotal)
@@ -35,7 +38,9 @@ namespace IConsumer.Microservices.PaymentMicroservice.Domain.AggregatesModel.Inv
                 InvoiceId = invoice.Id
             });
 
+            _uow.BeginTransaction();
             _invoiceRepository.Insert(invoice);
+            _uow.Commit();
 
             return invoice;
         }

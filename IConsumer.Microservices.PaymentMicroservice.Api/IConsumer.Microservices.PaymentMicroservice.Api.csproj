@@ -1,7 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IConsumer.App.Common.Domain\IConsumer.App.Common.Domain.csproj" />
+    <ProjectReference Include="..\IConsumer.MicroServices.Common.Api\IConsumer.MicroServices.Common.Api.csproj" />
+    <ProjectReference Include="..\IConsumer.Microservices.PaymentMicroservice.Crosscutting\IConsumer.Microservices.PaymentMicroservice.Crosscutting.csproj" />
+  </ItemGroup>
+
 
 </Project>
