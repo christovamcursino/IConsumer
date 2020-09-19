@@ -42,8 +42,8 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+            <Button x:Name="ButtonCheckOut" Text="Check-Out" Clicked="ButtonCheckOut_Clicked" />
         </StackLayout>
-    </ContentPage.Content>
 
-    <Button x:Name="ButtonCheckOut" Text="Check-Out" Clicked="ButtonCheckOut_Clicked" />
+    </ContentPage.Content>
 </ContentPage>

@@ -1,7 +1,11 @@
-﻿using IConsumer.Microservices.Common.Domain.UoW;
+﻿using IConsumer.Microservices.Common.Domain.Services;
+using IConsumer.Microservices.Common.Domain.UoW;
 using IConsumer.Microservices.Common.Infra.DataAccess.UoW;
+using IConsumer.Microservices.Common.Infra.Helper;
 using IConsumer.Microservices.Common.Infra.Messaging.Services;
 using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.OrderAggregate;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.ProductAggregate;
+using IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.StoreAggregate;
 using IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Context;
 using IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Repositories;
 using IConsumer.MicroServices.Common.Application.Interfaces.CQRS.Messaging;
@@ -28,10 +32,17 @@ namespace IConsumer.Microservices.OrderMicroservice.CrossCutting
             //Services
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderStatusService, OrderStatusService>();
+            services.AddScoped<IProductQueryService, ProductQueryService>();
+            services.AddScoped<IStoreTableQueryService, StoreTableQueryService>();
+
 
             //Commands
             services.AddScoped<IApiApplicationService, ApiApplicationService>();
             services.AddScoped<IMediatorHandler, AzureServiceBusQueue>();
+
+            //Queryes
+            services.AddScoped<IProductQueryRepository, ProductMicroserviceQueryRepository>();
+            services.AddScoped<IStoreTableQueryRepository, StoreTableMicroserviceQueryRepository>();
         }
 
         public static void AddDbContext(this IServiceCollection services)
@@ -41,6 +52,8 @@ namespace IConsumer.Microservices.OrderMicroservice.CrossCutting
 
             //IoW
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<ISerializerService, SerializerService>();
         }
 
         public static void AddIdentityAuthorization(this IServiceCollection services)

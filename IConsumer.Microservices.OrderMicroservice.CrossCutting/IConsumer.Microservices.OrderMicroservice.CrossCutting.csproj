@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IConsumer.Microservices.Common.Infra.DataAccess\IConsumer.Microservices.Common.Infra.DataAccess.csproj" />
+    <ProjectReference Include="..\IConsumer.Microservices.Common.Infra.Helper\IConsumer.Microservices.Common.Infra.Helper.csproj" />
     <ProjectReference Include="..\IConsumer.Microservices.Common.Infra.Messaging\IConsumer.Microservices.Common.Infra.Messaging.csproj" />
     <ProjectReference Include="..\IConsumer.MicroServices.OrderMicroservice.Application\IConsumer.MicroServices.OrderMicroservice.Application.csproj" />
     <ProjectReference Include="..\IConsumer.Microservices.OrderMicroservice.Infra.DataAccess\IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.csproj" />

@@ -4,8 +4,8 @@
              x:Class="IConsumer.App.Views.Login.SignInPage">
     <ContentPage.Content>
         <StackLayout>
-            <Entry x:Name="EntryUsername" Placeholder="Username" />
-            <Entry x:Name="EntryPassword" Placeholder="Password" />
+            <Entry x:Name="EntryUsername" Placeholder="Username" Text="ccursino"/>
+            <Entry x:Name="EntryPassword" Placeholder="Password" Text="@dsInf123"/>
             <Button x:Name="ButtonSignIn" Text="SignIn" Clicked="ButtonSignIn_Clicked" />
             <Button x:Name="ButtonSignUp" Text="SignUp" Clicked="ButtonSignUp_Clicked" />
         </StackLayout>

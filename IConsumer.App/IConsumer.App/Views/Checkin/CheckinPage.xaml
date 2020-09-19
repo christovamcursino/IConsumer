@@ -7,7 +7,7 @@
             <Label Text="Informe o código da mesa:"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="EntryTableId" Placeholder="TableId" />
+            <Entry x:Name="EntryTableId" Placeholder="TableId" Text="a2cef418-474a-44d0-a2b4-7c8c60aea1a6" />
             <Button x:Name="ButtonCheckIn" Text="Check-In" Clicked="ButtonCheckIn_Clicked" />
         </StackLayout>
     </ContentPage.Content>

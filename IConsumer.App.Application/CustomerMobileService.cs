@@ -9,6 +9,7 @@ using IdentityModel.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -32,7 +33,7 @@ namespace IConsumer.App.Application
         public StoreTable CurrentTable { get => _currentTable; }
         public Store CurrentStore { get => _currentStore; }
 
-        public IList<OrderItem> Cart => throw new NotImplementedException();
+        public IList<OrderItem> Cart { get => _cart; }
 
         public async Task<bool> DoCheckIn(Guid storeTableId)
         {
@@ -56,9 +57,13 @@ namespace IConsumer.App.Application
 
         public async Task CreateOrder()
         {
-            Order order = new Order();
-            order.OrderItems = this.Cart;
+            Order order = new Order
+            {
+                OrderItems = this.Cart
+            };
             await _orderService.CreateOrderAsync(order, CurrentTable.Id);
+
+            this._cart = null;
         }
 
         public async Task<Customer> GetCustomer(Guid customerId)
@@ -156,8 +161,14 @@ namespace IConsumer.App.Application
             OrderItem item = new OrderItem();
             item.ProductId = product.Id;
             item.ProductName = product.Name;
+            item.Price = product.Price;
             item.Amount = amount;
             this.Cart.Add(item);
+        }
+
+        public decimal GetCartTotal()
+        {
+            return this.Cart.Sum(o => o.Price * o.Amount);
         }
     }
 }

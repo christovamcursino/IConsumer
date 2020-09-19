@@ -11,6 +11,7 @@ namespace IConsumer.App.Application.Interfaces
         StoreTable CurrentTable { get; }
         Store CurrentStore { get; }
         IList<OrderItem> Cart { get; }
+        decimal GetCartTotal();
 
         Task<bool> DoCheckIn(Guid storeTableId);
         void AddProductToCart(Product product, int amount);

@@ -23,7 +23,8 @@ namespace IConsumer.App.Infra.DataAccess.Repositories
             var client = getHttpClient();
             var orderSerialized = _serializerService.Serialize(order);
             var httpContent = new StringContent(orderSerialized, Encoding.UTF8, "application/json");
-            await client.PostAsync(_baseUrl + "table/" + tableId, httpContent);
+            var result = await client.PostAsync(_baseUrl + "/table/" + tableId, httpContent);
+            Console.WriteLine(result.Content);
         }
 
         public async Task<IEnumerable<Order>> ReadCustomerOrdersAsync()

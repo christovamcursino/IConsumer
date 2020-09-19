@@ -19,6 +19,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <Label x:Name="LabelOrderTotal" />
+            <Button x:Name="ButtonCreateOrder" Text="Efetuar Pedido" Clicked="ButtonCreateOrder_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
