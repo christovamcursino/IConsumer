@@ -17,7 +17,8 @@
                   HasUnevenRows="True" 
                   SeparatorVisibility="None"
                   SeparatorColor="Transparent"
-                  IsGroupingEnabled="True">
+                  IsGroupingEnabled="True"
+                  ItemTapped="OnProductClick">
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -43,4 +44,6 @@
 
         </StackLayout>
     </ContentPage.Content>
+
+    <Button x:Name="ButtonCheckOut" Text="Check-Out" Clicked="ButtonCheckOut_Clicked" />
 </ContentPage>

@@ -31,10 +31,9 @@ namespace IConsumer.App.Views.AddItem
 
         private async void ButtonAddToCart_Clicked(object sender, EventArgs e)
         {
-
             int amount = int.Parse(EntryAmount.Text);
 
-            //TODO: ADICIONAR ITEM NO CARRINHO
+            App.AppService.AddProductToCart(this.ChoosenProduct, amount);
 
             var menuPage = new MenuPage();
             await menuPage.PopulateMenu();

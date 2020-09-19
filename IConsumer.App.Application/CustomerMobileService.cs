@@ -20,6 +20,7 @@ namespace IConsumer.App.Application
     {
         private StoreTable _currentTable;
         private Store _currentStore;
+        private IList<OrderItem> _cart;
 
         private ICustomerService _customerService;
         private IOrderService _orderService;
@@ -31,6 +32,8 @@ namespace IConsumer.App.Application
         public StoreTable CurrentTable { get => _currentTable; }
         public Store CurrentStore { get => _currentStore; }
 
+        public IList<OrderItem> Cart => throw new NotImplementedException();
+
         public async Task<bool> DoCheckIn(Guid storeTableId)
         {
             _currentTable = await GetTable(storeTableId);
@@ -41,6 +44,7 @@ namespace IConsumer.App.Application
             }
 
             _currentStore = await GetStore(CurrentTable.StoreId);
+            _cart = new List<OrderItem>();
 
             return true;
         }
@@ -50,8 +54,10 @@ namespace IConsumer.App.Application
             await _customerService.CreateCustomerAsync(customer);
         }
 
-        public async Task CreateOrder(Order order)
+        public async Task CreateOrder()
         {
+            Order order = new Order();
+            order.OrderItems = this.Cart;
             await _orderService.CreateOrderAsync(order, CurrentTable.Id);
         }
 
@@ -143,6 +149,15 @@ namespace IConsumer.App.Application
             _productService = new ProductRemoteService(new ProductMicroserviceRepository(token, new SerializerService()),
                 new ProductTypeMicroserviceRepository(token, new SerializerService()));
             _storeService = new StoreRemoteService(new StoreMicroserviceRepository(token, new SerializerService()));
+        }
+
+        public void AddProductToCart(Product product, int amount)
+        {
+            OrderItem item = new OrderItem();
+            item.ProductId = product.Id;
+            item.ProductName = product.Name;
+            item.Amount = amount;
+            this.Cart.Add(item);
         }
     }
 }
