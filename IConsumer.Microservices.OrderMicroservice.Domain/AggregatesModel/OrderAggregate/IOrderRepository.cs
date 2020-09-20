@@ -11,5 +11,6 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
         public Task<IEnumerable<Order>> FilterOpenedOrdersOfCustomer(Guid customerId);
         public Task<IEnumerable<Order>> FilterClosedOrdersOfCustomer(Guid customerId);
         public Task<IEnumerable<Order>> FilterNewOrders(Guid storeId);
+        public Task<IEnumerable<Order>> FilterStoreOpenedOrders(Guid storeId);
     }
 }

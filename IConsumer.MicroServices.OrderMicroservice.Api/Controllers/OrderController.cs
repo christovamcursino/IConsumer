@@ -47,6 +47,17 @@ namespace IConsumer.MicroServices.OrderMicroservice.Api.Controllers
             return await _applicationService.GetCustomerOpenedOrders(customerId);
         }
 
+        // GET: api/<OrderController>
+        [HttpGet("store-orders")]
+        public async Task<IEnumerable<Order>> GetStoreOrders()
+        {
+            bool validId = Guid.TryParse(User.FindFirst("sub")?.Value, out Guid storeId);
+            if (!validId)
+                throw new Exception("Invalid user id");
+
+            return await _applicationService.GetStoreOpenedOrders(storeId);
+        }
+
         // GET api/<OrderController>/5
         [HttpGet("{orderId}")]
         public async Task<Order> Get(Guid orderId)

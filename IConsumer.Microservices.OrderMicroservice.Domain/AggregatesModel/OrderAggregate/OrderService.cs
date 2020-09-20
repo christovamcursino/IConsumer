@@ -65,11 +65,16 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
             return await _orderRepository.FilterNewOrders(storeId);
         }
 
+        public async Task<IEnumerable<Order>> GetStoreOpenedOrders(Guid storeId)
+        {
+            return await _orderRepository.FilterStoreOpenedOrders(storeId);
+        }
+
         public async Task<bool> ProcessOrderAsync(Order order)
         {
             //Recupera o ID da loja e os dados de cada produto
             StoreTable storeTable = await _storeTableQueryService.GetStoreTableAsync(order.TableId);
-            order.StoreId = storeTable.Id;
+            order.StoreId = storeTable.StoreId;
 
             foreach(var item in order.OrderItems)
             {

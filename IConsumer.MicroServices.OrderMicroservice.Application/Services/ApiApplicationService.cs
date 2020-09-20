@@ -56,5 +56,10 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
         {
             return await _orderService.GetStoreNewOrders(storeId);
         }
+
+        public async Task<IEnumerable<Order>> GetStoreOpenedOrders(Guid storeId)
+        {
+            return await _orderService.GetStoreOpenedOrders(storeId);
+        }
     }
 }

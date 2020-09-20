@@ -25,6 +25,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Repositorie
         public async Task<IEnumerable<Order>> FilterOpenedOrdersOfCustomer(Guid customerId)
         {
             return await _context.Set<Order>()
+                .Include(o => o.OrderItems)
                 .Where(o => o.CustomerId.Equals(customerId) && !(
                         o.OrderStatus.Equals(OrderStatus.Delivered) || o.OrderStatus.Equals(OrderStatus.Cancelled)))
                 .ToListAsync();
@@ -33,8 +34,20 @@ namespace IConsumer.Microservices.OrderMicroservice.Infra.DataAccess.Repositorie
         public async Task<IEnumerable<Order>> FilterClosedOrdersOfCustomer(Guid customerId)
         {
             return await _context.Set<Order>()
+                .Include(o => o.OrderItems)
                 .Where(o => o.CustomerId.Equals(customerId) && (
                         o.OrderStatus.Equals(OrderStatus.Delivered) || o.OrderStatus.Equals(OrderStatus.Cancelled)))
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Order>> FilterStoreOpenedOrders(Guid storeId)
+        {
+            return await _context.Set<Order>()
+                .Include(o => o.OrderItems)
+                .Where(o => o.StoreId.Equals(storeId) && (
+                        o.OrderStatus.Equals(OrderStatus.PaymentConfirmed) ||
+                        o.OrderStatus.Equals(OrderStatus.Received) ||
+                        o.OrderStatus.Equals(OrderStatus.Ready)))
                 .ToListAsync();
         }
     }

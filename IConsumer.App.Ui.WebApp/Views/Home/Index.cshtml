@@ -1,0 +1,48 @@
+﻿@model IConsumer.App.Application.Models.ViewModels.StoreOrdersViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Bem vindo ao Modulo de Gestão do IConsumer.</h1>
+    <h2>Aqui estão seus pedidos em aberto.</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Pedido
+                </th>
+                <th>
+                    Mesa
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Ações
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OpenedOrders)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TableId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderStatus)
+                    </td>
+                    <td>
+                        <a asp-action="ReceiveOrder" asp-controller="Home" class="btn btn-dark" asp-route-id="@item.Id">Receber Pedido</a>
+                        <a asp-action="DeliverOrder" asp-controller="Home" class="btn btn-dark" asp-route-id="@item.Id">Entregar Pedido</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

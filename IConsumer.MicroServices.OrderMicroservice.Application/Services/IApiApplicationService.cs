@@ -13,6 +13,7 @@ namespace IConsumer.MicroServices.OrderMicroservice.Application.Services
 
         Task<IEnumerable<Order>> GetCustomerOpenedOrders(Guid customerId);
         Task<IEnumerable<Order>> GetStoreNewOrders(Guid storeId);
+        Task<IEnumerable<Order>> GetStoreOpenedOrders(Guid storeId);
         Task<bool> ChangeOrderStatus(Guid storeId, Guid orderId, ChangeStatusViewModel orderStatus);
 
         Task<Order> GetOrder(Guid orderId);

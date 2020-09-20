@@ -1,5 +1,6 @@
 ﻿using IConsumer.App.Application.Interfaces;
 using IConsumer.App.Application.Models.Dtos;
+using IConsumer.App.Application.Models.ViewModels;
 using IConsumer.App.Domain.Entities;
 using IConsumer.App.Domain.Interfaces.Services;
 using IConsumer.App.Domain.Services;
@@ -23,6 +24,9 @@ namespace IConsumer.App.Application
         private IStoreService _storeService;
 
         private string token;
+        private Guid storeId;
+
+
 
         public async Task AddProduct(Product product)
         {
@@ -54,17 +58,26 @@ namespace IConsumer.App.Application
             return await _storeService.GetStoreAsync(storeId);
         }
 
-        public Task UpdateOrderStatus(Guid orderId, OrderStatus orderStatus)
+        public async Task<StoreOrdersViewModel> GetOpenedOrders()
         {
-            throw new NotImplementedException();
+            StoreOrdersViewModel result = new StoreOrdersViewModel();
+            Store currentStore = await _storeService.GetStoreAsync(storeId);
+            result.StoreName = currentStore.Name;
+
+            result.OpenedOrders = await _orderService.GetStoreOpenedOrdersAsync();
+
+            return result;
+        }
+
+        public async Task UpdateOrderStatus(Guid orderId, OrderStatus orderStatus)
+        {
+            await _orderService.UpdateOrderStatusAsync(orderId, orderStatus);
         }
         public bool SignIn(string username, string password)
         {
             token = GetToken(username, password);
             if (String.IsNullOrEmpty(token))
                 return false;
-
-            registerServices();
             return true;
         }
 
@@ -114,6 +127,34 @@ namespace IConsumer.App.Application
             return response.AccessToken;
         }
 
+        private string GetStoreToken()
+        {
+            var client = new HttpClient();
+            var response = client.RequestPasswordTokenAsync(new PasswordTokenRequest
+            {
+                Address = "https://iconsumer-ccursino-iam-microservice-identity.azurewebsites.net/connect/token",
+
+                ClientId = "IConsumerDesktopApp_ClientId",
+
+                UserName = "manoel",
+                Password = "@dsInf123"
+            }).Result;
+
+            return response.AccessToken;
+        }
+
+        public void RegisterToken(Task<string> tokenAsync, string storeId)
+        {
+            //TODO: o token esta vindo sem a audiencia, nao e valido para as chamadas de api
+            //this.token = await tokenAsync;
+            this.storeId = Guid.Parse(storeId);
+
+            if (this.token==null)
+                this.token = GetStoreToken();
+
+            registerServices();
+        }
+
         private void registerServices()
         {
             _customerService = new CustomerRemoteService(new CustomerMicroserviceRepository(token, new SerializerService()));
@@ -122,6 +163,5 @@ namespace IConsumer.App.Application
                 new ProductTypeMicroserviceRepository(token, new SerializerService()));
             _storeService = new StoreRemoteService(new StoreMicroserviceRepository(token, new SerializerService()));
         }
-
     }
 }

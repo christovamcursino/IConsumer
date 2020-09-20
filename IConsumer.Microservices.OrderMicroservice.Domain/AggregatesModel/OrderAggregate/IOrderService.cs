@@ -13,7 +13,8 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
         public Task<IEnumerable<Order>> GetCustomerOpenedOrders(Guid customerId);
         public Task<IEnumerable<Order>> GetCustomerClosedOrders(Guid customerId);
         public Task<IEnumerable<Order>> GetStoreNewOrders(Guid storeId);
-
+        public Task<IEnumerable<Order>> GetStoreOpenedOrders(Guid storeId);
+        
         public Task<bool> SetOrderStatus(Guid storeId, Guid orderId, OrderStatus orderStatus);
 
         public Task<Order> GetOrder(Guid id);

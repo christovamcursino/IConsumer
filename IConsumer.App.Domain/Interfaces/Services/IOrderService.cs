@@ -11,6 +11,7 @@ namespace IConsumer.App.Domain.Interfaces.Services
         Task CreateOrderAsync(Order order, Guid tableId);
         Task<IEnumerable<Order>> GetStoreNewOrdersAsync();
         Task<IEnumerable<Order>> GetCustomerOpenOrdersAsync();
+        Task<IEnumerable<Order>> GetStoreOpenedOrdersAsync();
         Task<Order> UpdateOrderStatusAsync(Guid orderId, OrderStatus orderStatus);
     }
 }

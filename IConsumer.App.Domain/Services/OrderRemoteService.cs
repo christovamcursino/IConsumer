@@ -32,6 +32,11 @@ namespace IConsumer.App.Domain.Services
             return await _orderRepository.ReadNewOrdersAsync();
         }
 
+        public async Task<IEnumerable<Order>> GetStoreOpenedOrdersAsync()
+        {
+            return await _orderRepository.ReadStoreOpenedOrdersAsync();
+        }
+
         public async Task<Order> UpdateOrderStatusAsync(Guid orderId, OrderStatus orderStatus)
         {
             return await _orderRepository.UpdateOrderStatusAsync(orderId, orderStatus);

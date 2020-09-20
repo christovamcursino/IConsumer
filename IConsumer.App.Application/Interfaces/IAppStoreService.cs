@@ -1,4 +1,5 @@
-﻿using IConsumer.App.Domain.Entities;
+﻿using IConsumer.App.Application.Models.ViewModels;
+using IConsumer.App.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +17,11 @@ namespace IConsumer.App.Application.Interfaces
         Task AddProduct(Product product);
 
         Task<IEnumerable<Order>> GetNewOrders();
+        
+        Task<StoreOrdersViewModel> GetOpenedOrders();
 
         Task UpdateOrderStatus(Guid orderId, OrderStatus orderStatus);
+
+        void RegisterToken(Task<string> tokenAsync, string storeId);
     }
 }
