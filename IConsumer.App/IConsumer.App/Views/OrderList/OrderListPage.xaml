@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IConsumer.App.Views.OrderList.OrderListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Pedidos"
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Orders}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding OrderDate}"/>
+                                <Label Text="{Binding OrderStatus}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="ButtonRefresh" Text="Refresh" Clicked="ButtonRefresh_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

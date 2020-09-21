@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using IConsumer.App.Infra.WebApp.Crosscutting;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace IConsumer.App.Ui.WebApp
 {
@@ -39,11 +38,10 @@ namespace IConsumer.App.Ui.WebApp
                      options.ClientId = "IConsumerDesktopApp_ClientId";
                      options.SignInScheme = "cookie";
                      options.RequireHttpsMetadata = false;
-                     options.ResponseType = "code id_token token";
+                     options.ResponseType = "code id_token";
 
                      options.SaveTokens = true;
                      options.GetClaimsFromUserInfoEndpoint = true;
-                     options.TokenValidationParameters.ValidateAudience = true;
 
                      options.Scope.Add("email");
                      options.Scope.Add("offline_access");

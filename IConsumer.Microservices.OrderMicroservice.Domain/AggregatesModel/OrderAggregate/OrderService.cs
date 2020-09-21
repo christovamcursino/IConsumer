@@ -85,6 +85,7 @@ namespace IConsumer.Microservices.OrderMicroservice.Domain.AggregatesModel.Order
 
             _uow.BeginTransaction();
             await _orderRepository.CreateAsync(order);
+            _orderStatusService.AddTracking(order.Id, order.OrderStatus);
             await _uow.SaveChangesAsync();
 
             var paidInvoiceId = await _paymentService.ExecutePayment(order.Id, order.CustomerId, getOrderTotal(order));

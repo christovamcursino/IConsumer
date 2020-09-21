@@ -1,5 +1,6 @@
 ﻿using IConsumer.App.Domain.Entities;
 using IConsumer.App.Views.Checkin;
+using IConsumer.App.Views.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,12 @@ namespace IConsumer.App.Views.CheckOut
         {
             await App.AppService.CreateOrder();
 
-            Navigation.InsertPageBefore(new CheckinPage(), this);
+            TabMainPage pg = new TabMainPage();
+            await pg.AddPages();
+            Navigation.InsertPageBefore(pg, this);
+
+
+            //Navigation.InsertPageBefore(new CheckinPage(), this);
             await Navigation.PopAsync().ConfigureAwait(false);
         }
     }

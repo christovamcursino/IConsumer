@@ -1,4 +1,5 @@
-﻿using IConsumer.App.Views.Menu;
+﻿using IConsumer.App.Views.Main;
+using IConsumer.App.Views.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,13 @@ namespace IConsumer.App.Views.Checkin
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CheckinPage : ContentPage
     {
+        public TabMainPage ParentPage { get; set; }
+
         public CheckinPage()
         {
             InitializeComponent();
         }
+
 
         private async void ButtonCheckIn_Clicked(object sender, EventArgs e)
         {
@@ -33,7 +37,11 @@ namespace IConsumer.App.Views.Checkin
             var menuPage = new MenuPage();
             await menuPage.PopulateMenu();
 
-            Navigation.InsertPageBefore(menuPage, this);
+            Page thisPage = this;
+            if (ParentPage != null)
+                thisPage = ParentPage;
+
+            Navigation.InsertPageBefore(menuPage, thisPage);
             await Navigation.PopAsync().ConfigureAwait(false);
         }
     }

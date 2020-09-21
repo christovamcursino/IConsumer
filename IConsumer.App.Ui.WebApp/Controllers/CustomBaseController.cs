@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace IConsumer.App.Ui.WebApp.Controllers
 {
+    [Authorize]
     public abstract class CustomBaseController : Controller
     {
         protected readonly IAppStoreService _sessionApp;
