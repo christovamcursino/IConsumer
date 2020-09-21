@@ -14,6 +14,9 @@
                     Pedido
                 </th>
                 <th>
+                    Cliente
+                </th>
+                <th>
                     Mesa
                 </th>
                 <th>
@@ -27,21 +30,24 @@
         <tbody>
             @foreach (var item in Model.OpenedOrders)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TableId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderStatus)
-                    </td>
-                    <td>
-                        <a asp-action="ReceiveOrder" asp-controller="Home" class="btn btn-dark" asp-route-id="@item.Id">Receber Pedido</a>
-                        <a asp-action="DeliverOrder" asp-controller="Home" class="btn btn-dark" asp-route-id="@item.Id">Entregar Pedido</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TableNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderStatus)
+                </td>
+                <td>
+                    <a asp-action="ReceiveOrder" asp-controller="Home" class="btn btn-dark" asp-route-id="@item.Id">Receber Pedido</a>
+                    <a asp-action="DeliverOrder" asp-controller="Home" class="btn btn-dark" asp-route-id="@item.Id">Entregar Pedido</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

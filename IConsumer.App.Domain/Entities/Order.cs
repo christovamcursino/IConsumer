@@ -15,6 +15,9 @@ namespace IConsumer.App.Domain.Entities
         public ICollection<OrderItem> OrderItems { get; set; }
         public ICollection<OrderTracking> TrackingHistory { get; set; }
 
+        public string CustomerName { get; set; }
+        public int TableNumber { get; set; }
+
         public bool PaymentApproved { get; set; }
         public string PaymentId { get; set; }
     }

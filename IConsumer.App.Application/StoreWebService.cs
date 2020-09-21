@@ -26,8 +26,6 @@ namespace IConsumer.App.Application
         private string token;
         private Guid storeId;
 
-
-
         public async Task AddProduct(Product product)
         {
             await _productService.CreateProductAsync(product);
@@ -65,6 +63,18 @@ namespace IConsumer.App.Application
             result.StoreName = currentStore.Name;
 
             result.OpenedOrders = await _orderService.GetStoreOpenedOrdersAsync();
+
+            if (result.OpenedOrders != null)
+            {
+                foreach (var order in result.OpenedOrders)
+                {
+                    var customer = await _customerService.GetCustomerAsync(order.CustomerId);
+                    order.CustomerName = customer.Name;
+
+                    var table = await _storeService.GetStoreTableAsync(order.TableId);
+                    order.TableNumber = table.TableNumber;
+                }
+            }
 
             return result;
         }

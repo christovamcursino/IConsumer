@@ -11,7 +11,7 @@ namespace IConsumer.App.Infra.DataAccess.Repositories
 {
     public class CustomerMicroserviceRepository : MicroserviceRepositoryBase, ICustomerRepository
     {
-        private static string _baseUrl = "http://iconsumer-ccursino-customermicroservice.azurewebsites.net/api/Customer";
+        private static string _baseUrl = "https://iconsumer-ccursino-customermicroservice.azurewebsites.net/api/Customer";
 
         public CustomerMicroserviceRepository(string token, ISerializerService serializerService) : base(token, serializerService)
         {
